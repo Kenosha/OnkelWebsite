@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Galerie mit handgemachten Portrait-Uhren und paradoxen Gebilden."
+    />
+    <title>Onkels Werkstatt – Galerie</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script defer src="assets/js/main.js"></script>
+    <script defer src="assets/js/gallerie.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Zur Startseite">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">Onkels Werkstatt</span>
+        </a>
+        <nav class="nav" aria-label="Hauptnavigation">
+          <a class="nav-link" href="index.html">Start</a>
+          <a class="nav-link" href="gallerie.html">Galerie</a>
+          <a class="nav-link" href="kontakt.html">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-head">
+        <div class="container">
+          <h1>Galerie</h1>
+          <p class="lead">
+            Ein erster Überblick. Die Bildansichten wechseln automatisch; später können hier
+            weitere Kategorien und Details ergänzt werden.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <header class="section-head">
+            <h2>Portrait-Uhren</h2>
+            <p class="muted">Zwei Features – jeweils als automatisch wechselnde Bildansicht.</p>
+          </header>
+
+          <div class="gallery-row two">
+            <article class="gallery-view" data-slider data-base="assets/gallery/portrait-uhren/personalisierbar">
+              <div class="view-top">
+                <h3>Personalisierbar</h3>
+                <p class="muted">Name, Motiv oder kleine Details nach Wunsch.</p>
+              </div>
+              <div class="slider" data-slider-viewport>
+                <img
+                  class="slider-img"
+                  data-slider-img
+                  alt="Portrait-Uhr: personalisierbar (Beispielbilder)"
+                  loading="lazy"
+                />
+                <div class="slider-badges">
+                  <span class="badge" data-slider-index></span>
+                  <span class="badge ghost">Automatisch</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-view" data-slider data-base="assets/gallery/portrait-uhren/leuchtfarben">
+              <div class="view-top">
+                <h3>Leuchtfarben</h3>
+                <p class="muted">Effekte, die bei Licht und Dunkelheit wirken.</p>
+              </div>
+              <div class="slider" data-slider-viewport>
+                <img
+                  class="slider-img"
+                  data-slider-img
+                  alt="Portrait-Uhr: Leuchtfarben (Beispielbilder)"
+                  loading="lazy"
+                />
+                <div class="slider-badges">
+                  <span class="badge" data-slider-index></span>
+                  <span class="badge ghost">Automatisch</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <header class="section-head">
+            <h2>Paradoxe Gebilde</h2>
+            <p class="muted">Drei Ansichten – Uhren, Kerzenhalter und Deko.</p>
+          </header>
+
+          <div class="gallery-row three">
+            <article class="gallery-view" data-slider data-base="assets/gallery/paradoxe-gebilde/uhren">
+              <div class="view-top">
+                <h3>Uhren</h3>
+                <p class="muted">Zeit trifft Illusion – Formen mit Überraschung.</p>
+              </div>
+              <div class="slider" data-slider-viewport>
+                <img
+                  class="slider-img"
+                  data-slider-img
+                  alt="Paradoxes Gebilde als Uhr (Beispielbilder)"
+                  loading="lazy"
+                />
+                <div class="slider-badges">
+                  <span class="badge" data-slider-index></span>
+                  <span class="badge ghost">Automatisch</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-view" data-slider data-base="assets/gallery/paradoxe-gebilde/kerzenhalter">
+              <div class="view-top">
+                <h3>Kerzenhalter</h3>
+                <p class="muted">Stabil, sicher und mit einem besonderen Blickfang.</p>
+              </div>
+              <div class="slider" data-slider-viewport>
+                <img
+                  class="slider-img"
+                  data-slider-img
+                  alt="Paradoxes Gebilde als Kerzenhalter (Beispielbilder)"
+                  loading="lazy"
+                />
+                <div class="slider-badges">
+                  <span class="badge" data-slider-index></span>
+                  <span class="badge ghost">Automatisch</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-view" data-slider data-base="assets/gallery/paradoxe-gebilde/deko">
+              <div class="view-top">
+                <h3>Deko</h3>
+                <p class="muted">Für Regal, Tisch oder Wand – schlicht oder verspielt.</p>
+              </div>
+              <div class="slider" data-slider-viewport>
+                <img
+                  class="slider-img"
+                  data-slider-img
+                  alt="Paradoxes Gebilde als Deko (Beispielbilder)"
+                  loading="lazy"
+                />
+                <div class="slider-badges">
+                  <span class="badge" data-slider-index></span>
+                  <span class="badge ghost">Automatisch</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">© <span data-year></span> Onkels Werkstatt</p>
+        <p class="muted">Tipp: Lege Bilder als `01.jpg`, `02.jpg`, … in die jeweiligen Ordner.</p>
+      </div>
+    </footer>
+  </body>
+</html>

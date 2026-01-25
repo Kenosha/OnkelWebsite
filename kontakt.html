@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Kontakt – Anfrage, Bestellung oder Frage." />
+    <title>Onkels Werkstatt – Kontakt</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script defer src="assets/js/main.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Zur Startseite">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">Onkels Werkstatt</span>
+        </a>
+        <nav class="nav" aria-label="Hauptnavigation">
+          <a class="nav-link" href="index.html">Start</a>
+          <a class="nav-link" href="gallerie.html">Galerie</a>
+          <a class="nav-link" href="kontakt.html">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-head">
+        <div class="container">
+          <h1>Kontakt</h1>
+          <p class="lead">
+            Du möchtest ein Stück anfragen, etwas personalisieren oder einfach Hallo sagen?
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid two">
+            <article class="card">
+              <h2>Direkt schreiben</h2>
+              <p class="muted">
+                Platzhalter – trage hier später E-Mail, Telefon oder Social Media ein.
+              </p>
+              <p>
+                <a class="btn primary" href="mailto:beispiel@domain.de">E-Mail senden</a>
+              </p>
+              <p class="muted small">
+                Hinweis: Für echte Adressen/Telefonnummern bitte die Platzhalter ersetzen.
+              </p>
+            </article>
+
+            <article class="card">
+              <h2>Kurzformular</h2>
+              <p class="muted">Einfach, ohne Backend – öffnet dein E-Mail-Programm.</p>
+              <form class="form" action="mailto:beispiel@domain.de" method="post" enctype="text/plain">
+                <label>
+                  Name
+                  <input type="text" name="name" placeholder="Dein Name" autocomplete="name" />
+                </label>
+                <label>
+                  Nachricht
+                  <textarea name="nachricht" rows="5" placeholder="Worum geht es?"></textarea>
+                </label>
+                <button class="btn" type="submit">Nachricht vorbereiten</button>
+              </form>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">© <span data-year></span> Onkels Werkstatt</p>
+        <p class="muted">Kontaktseite – Platzhalter bis echte Daten eingetragen sind.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
