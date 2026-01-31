@@ -197,8 +197,16 @@ function setupGroupedSliderWithResolvedSets(sliderRoot, sets) {
   function nextManual() {
     const set = normalizedSets[currentSetIndex];
     holdCounter = 0;
-    currentImageIndex = (currentImageIndex + 1) % set.images.length;
-    const nextUrl = set.images[(currentImageIndex + 1) % set.images.length];
+
+    if (currentImageIndex + 1 < set.images.length) {
+      currentImageIndex++;
+    } else {
+      currentSetIndex = (currentSetIndex + 1) % normalizedSets.length;
+      currentImageIndex = 0;
+    }
+
+    const nextSet = normalizedSets[currentSetIndex];
+    const nextUrl = nextSet.images[(currentImageIndex + 1) % nextSet.images.length];
     setImage(true);
     preload(nextUrl);
   }
@@ -206,10 +214,19 @@ function setupGroupedSliderWithResolvedSets(sliderRoot, sets) {
   function prevManual() {
     const set = normalizedSets[currentSetIndex];
     holdCounter = 0;
-    currentImageIndex = (currentImageIndex - 1 + set.images.length) % set.images.length;
-    const nextUrl = set.images[(currentImageIndex - 1 + set.images.length) % set.images.length];
+
+    if (currentImageIndex - 1 >= 0) {
+      currentImageIndex--;
+    } else {
+      currentSetIndex = (currentSetIndex - 1 + normalizedSets.length) % normalizedSets.length;
+      const prevSet = normalizedSets[currentSetIndex];
+      currentImageIndex = Math.max(0, prevSet.images.length - 1);
+    }
+
+    const currentSet = normalizedSets[currentSetIndex];
+    const prevIndex = (currentImageIndex - 1 + currentSet.images.length) % currentSet.images.length;
+    preload(currentSet.images[prevIndex]);
     setImage(true);
-    preload(nextUrl);
   }
 
   function pauseAutoFor(ms) {

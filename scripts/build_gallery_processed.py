@@ -272,6 +272,8 @@ def convert_heic_with_fallback(
     resizen/komprimieren anschließend (wenn möglich) mit ImageMagick/ffmpeg.
     """
     suffix = input_path.suffix.lower()
+    if output_path.exists() and not overwrite:
+        return
     if suffix not in {".heic", ".heif"}:
         convert_to_jpg(
             converter,

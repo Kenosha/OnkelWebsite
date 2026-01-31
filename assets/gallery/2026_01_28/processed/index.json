@@ -1,6 +1,6 @@
 {
   "collection": "2026_01_28",
-  "generated_at": "2026-01-28T18:40:39.536731+00:00",
+  "generated_at": "2026-01-31T13:02:06.398110+00:00",
   "categories": [
     {
       "id": "leucht",
@@ -15,7 +15,7 @@
           "order": 10,
           "sets": [
             {
-              "caption": "Auf Anfrage das Perfekte Persönliche Geschenk",
+              "caption": "Das perfekte Geschenk – persönlich, handgefertigt, einzigartig",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-01",
               "images": [
@@ -28,7 +28,7 @@
               ]
             },
             {
-              "caption": "Leuchtet im Dunkeln",
+              "caption": "Leuchtet im Dunkeln – auf Wunsch mit fluoreszierendem Effekt",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-02",
               "images": [
@@ -45,7 +45,7 @@
           "order": 20,
           "sets": [
             {
-              "caption": "Bunt",
+              "caption": "Ein echter Blickfang. Bunt, lebendig, groovy.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01",
               "images": [
@@ -61,7 +61,7 @@
               ]
             },
             {
-              "caption": "Geschenk oder Visitenkarte",
+              "caption": "Eignet sich als Geschenk oder Aushängeschild. Persönlich und einprägsam.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02",
               "images": [
@@ -75,7 +75,7 @@
               ]
             },
             {
-              "caption": "Leuchtet im Dunkeln",
+              "caption": "Auch in der Nacht gut abzulesen, ohne zu stören.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03",
               "images": [
@@ -100,12 +100,12 @@
       "classes": [
         {
           "id": "ketten",
-          "title": "Ketten",
+          "title": "Kettenskulpturen",
           "subtitle": "",
           "order": 10,
           "sets": [
             {
-              "caption": "Einzigartig",
+              "caption": "Bewegung, fixiert. Jedes Stück ein Unikat.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/objekt/ketten/set-01",
               "images": [
@@ -116,7 +116,7 @@
               ]
             },
             {
-              "caption": "Modular",
+              "caption": "Modular und variantenreich, zum Kombinieren gemacht",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/objekt/ketten/set-02",
               "images": [
@@ -129,12 +129,12 @@
         },
         {
           "id": "unmoegliche_objekte",
-          "title": "Unmögliche Objekte",
+          "title": "Paradoxe Gebilde",
           "subtitle": "",
           "order": 20,
           "sets": [
             {
-              "caption": "Personalisierbar",
+              "caption": "Auf Wunsch personalisiert, mit kleinen Details nach Maß",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-01",
               "images": [
@@ -144,7 +144,7 @@
               ]
             },
             {
-              "caption": "Stilvoll",
+              "caption": "Schlicht, stilvoll, mit einem Twist",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-02",
               "images": [
@@ -157,7 +157,7 @@
               ]
             },
             {
-              "caption": "Vielseitig Einsetzbar",
+              "caption": "Vielseitig einsetzbar, neu kombinierbar.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-03",
               "images": [
@@ -169,7 +169,7 @@
               ]
             },
             {
-              "caption": "Wirft Fragen auf",
+              "caption": "Wirft Fragen auf. Wie passen die Objekte ineinander?",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04",
               "images": [
@@ -200,7 +200,7 @@
           "order": 10,
           "sets": [
             {
-              "caption": "Wenn Blumen nicht Reichen",
+              "caption": "Wenn Blumen nicht reichen, schenke eine personalisierte Vase.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/wohnen/blumenvasen/set-01",
               "images": [
@@ -217,7 +217,7 @@
           "order": 20,
           "sets": [
             {
-              "caption": "Modular",
+              "caption": "Modular aufgebaut, dem Anlass angepasst.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-01",
               "images": [
@@ -228,7 +228,7 @@
               ]
             },
             {
-              "caption": "Personalisierbar",
+              "caption": "Frei personalisierbar mit Text, Bild oder Motiv.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-02",
               "images": [
@@ -240,7 +240,7 @@
               ]
             },
             {
-              "caption": "Variantenreich",
+              "caption": "Schenke Licht in vielen Varianten, ob schlicht, edel oder auffällig.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03",
               "images": [
@@ -264,7 +264,7 @@
           "order": 30,
           "sets": [
             {
-              "caption": "Handgegossen und Selbstgefertigt",
+              "caption": "Handgegossen und selbstgefertigt",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/wohnen/ornamente/set-01",
               "images": [
@@ -277,12 +277,12 @@
         },
         {
           "id": "teelicht_karousel",
-          "title": "Teelicht Karousel",
+          "title": "Teelicht-Karouselle",
           "subtitle": "",
           "order": 40,
           "sets": [
             {
-              "caption": "Alle Anlässe",
+              "caption": "Ein Reigen im Kerzenschein, zu jedem Anlass ein Hingucker.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-01",
               "images": [
@@ -294,7 +294,7 @@
               ]
             },
             {
-              "caption": "Personalisierbar",
+              "caption": "Dein Geschenk, dein Motiv, von der Kerze bewegt.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-02",
               "images": [
@@ -314,7 +314,7 @@
           "order": 50,
           "sets": [
             {
-              "caption": "Auswechselbar",
+              "caption": "Ein Windlicht, viele Looks, einfach austauschbar",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-01",
               "images": [
@@ -324,7 +324,7 @@
               ]
             },
             {
-              "caption": "Warme Beleuchtung",
+              "caption": "Sanftes Licht für Abende, die länger dauern",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-02",
               "images": [
@@ -352,7 +352,7 @@
           "order": 10,
           "sets": [
             {
-              "caption": "Personalisierbar",
+              "caption": "Von der Rebe in die Schwebe: der personalisierte Flaschenhalter.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-01",
               "images": [
@@ -362,7 +362,7 @@
               ]
             },
             {
-              "caption": "Stilvoll",
+              "caption": "Stilvoll in Szene gesetzt. Für Tisch, Regal oder Bar.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-02",
               "images": [
@@ -378,12 +378,12 @@
         },
         {
           "id": "gabeln",
-          "title": "Gabeln",
+          "title": "Serviettenhalter",
           "subtitle": "",
           "order": 20,
           "sets": [
             {
-              "caption": "Der Konversationsstarter zu Tisch",
+              "caption": "Peace am Tisch, Victory in der Küche. Der wahrscheinlich coolste Serviettenhalter der Welt.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/kueche/gabeln/set-01",
               "images": [
@@ -402,7 +402,7 @@
           "order": 30,
           "sets": [
             {
-              "caption": "Handgegossen und Edel",
+              "caption": "Die Krönung für den besonderen Tropfen. Handgegossene Korken, personalisiert und edel.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/kueche/korken/set-01",
               "images": [
@@ -428,7 +428,7 @@
           "order": 10,
           "sets": [
             {
-              "caption": "Variantenreich",
+              "caption": "Kleine Anhänger, große Freude. Optional fluoreszierend.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/sonstiges/anhaenger/set-01",
               "images": [
@@ -446,7 +446,7 @@
           "order": 20,
           "sets": [
             {
-              "caption": "Schenke Musik",
+              "caption": "Schenke Musik, wenn Worte nicht reichen.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/sonstiges/spieluhren/set-01",
               "images": [
@@ -464,7 +464,7 @@
           "order": 30,
           "sets": [
             {
-              "caption": "Stillvoll",
+              "caption": "Auf Anfrage, stilvoll verpackt.",
               "hold": 4,
               "base": "assets/gallery/2026_01_28/processed/sonstiges/verpackung/set-01",
               "images": [
