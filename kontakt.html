@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Kontakt – Anfrage, Bestellung oder Frage." />
     <title>Onkel's Kunsthandwerk – Kontakt</title>
-    <link rel="stylesheet" href="assets/css/styles.css?v=2026_01_31_5" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=2026_01_31_21" />
     <script defer src="assets/js/main.js"></script>
   </head>
   <body>
@@ -27,98 +27,87 @@
       <section class="page-head">
         <div class="container">
           <h1>Kontakt</h1>
-	          <p class="lead">Du möchtest etwas anfragen oder einen Wunsch mitteilen? Schreib gern.</p>
 	        </div>
 	      </section>
 
-      <section class="section">
+      <section class="section section-contact">
         <div class="container">
-          <div class="grid two">
-            <article class="card">
-              <h2>Direkt schreiben</h2>
-              <p class="muted">Am schnellsten geht’s per E‑Mail.</p>
-              <p>
-                <a class="btn primary" href="mailto:orlando@matteo-orlando.de">E‑Mail senden</a>
-              </p>
-              <p class="muted small">Adresse: orlando@matteo-orlando.de</p>
-            </article>
-
-            <article class="card">
-              <h2>Kontaktformular</h2>
-              <p class="muted">
-                Deine Nachricht wird als Anfrage übermittelt. (Hinweis: Bitte keine sensiblen Daten
-                senden.)
-              </p>
-              <form
-                id="kontaktForm"
-                class="form"
-                action="https://script.google.com/macros/s/AKfycbzUYhyRtAsWhXpVZufQHZrpM9x5Qy4UNW7GUbYiCDZJzgrGrNwfxeCY5z4UgbFHdH8u/exec"
-                method="post"
-              >
+          <article class="card card-opaque">
+            <form
+              id="kontaktForm"
+              class="form"
+              action="https://script.google.com/macros/s/AKfycbzUYhyRtAsWhXpVZufQHZrpM9x5Qy4UNW7GUbYiCDZJzgrGrNwfxeCY5z4UgbFHdH8u/exec"
+              method="post"
+            >
+              <input
+                type="text"
+                name="hp"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+                style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden"
+              />
+              <label>
+                Name
                 <input
+                  id="kontaktName"
                   type="text"
-                  name="hp"
-                  tabindex="-1"
-                  autocomplete="off"
-                  aria-hidden="true"
-                  style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden"
+                  name="name"
+                  placeholder="Dein Name"
+                  autocomplete="name"
+                  required
                 />
-                <label>
-                  Name
-                  <input
-                    id="kontaktName"
-                    type="text"
-                    name="name"
-                    placeholder="Dein Name"
-                    autocomplete="name"
-                    required
-                  />
-                </label>
-                <label>
-                  E‑Mail
-                  <input
-                    id="kontaktEmail"
-                    type="email"
-                    name="email"
-                    placeholder="du@beispiel.de"
-                    autocomplete="email"
-                    required
-                  />
-                </label>
-                <label>
-                  Telefon (optional)
-                  <input
-                    id="kontaktTelefon"
-                    type="tel"
-                    name="telefon"
-                    placeholder="+49 …"
-                    autocomplete="tel"
-                  />
-                </label>
-                <label>
-                  Betreff (optional)
-                  <input
-                    id="kontaktBetreff"
-                    type="text"
-                    name="betreff"
-                    placeholder="Worum geht es?"
-                  />
-                </label>
-                <label>
-                  Nachricht / Wunsch
-                  <textarea
-                    id="kontaktNachricht"
-                    name="nachricht"
-                    rows="5"
-                    placeholder="Beschreibe kurz deine Anfrage oder deinen Wunsch."
-                    required
-                  ></textarea>
-                </label>
-                <button class="btn" type="submit">Nachricht senden</button>
-              </form>
-              <div class="muted small" id="kontaktStatus" aria-live="polite" style="margin-top:10px"></div>
-            </article>
-          </div>
+              </label>
+              <label>
+                E‑Mail
+                <input
+                  id="kontaktEmail"
+                  type="email"
+                  name="email"
+                  placeholder="du@beispiel.de"
+                  autocomplete="email"
+                  required
+                />
+              </label>
+              <label>
+                Telefon (optional)
+                <input
+                  id="kontaktTelefon"
+                  type="tel"
+                  name="telefon"
+                  placeholder="+49 …"
+                  autocomplete="tel"
+                />
+              </label>
+              <label>
+                Betreff (optional)
+                <input
+                  id="kontaktBetreff"
+                  type="text"
+                  name="betreff"
+                  placeholder="Worum geht es?"
+                />
+              </label>
+              <label>
+                Nachricht / Wunsch
+                <textarea
+                  id="kontaktNachricht"
+                  name="nachricht"
+                  rows="5"
+                  placeholder="Beschreibe kurz deine Anfrage oder deinen Wunsch."
+                  required
+                ></textarea>
+              </label>
+              <button class="btn" type="submit">Nachricht senden</button>
+            </form>
+
+            <div class="muted small" id="kontaktStatus" aria-live="polite" style="margin-top:10px"></div>
+          </article>
+
+          <p class="muted small" style="margin-top:14px">
+            Oder möchtest du mir direkt eine E‑Mail schreiben? Dann hierhin:
+            <a href="mailto:orlando@matteo-orlando.de">orlando@matteo-orlando.de</a>
+          </p>
         </div>
       </section>
     </main>
@@ -126,7 +115,13 @@
 	    <footer class="site-footer">
 	      <div class="container footer-inner">
 	        <p class="muted">© <span data-year></span> Onkel's Kunsthandwerk</p>
-	        <p class="muted">Kontakt – wir melden uns so bald wie möglich.</p>
+	        <nav class="footer-nav" aria-label="Fußnavigation">
+	          <a class="nav-link" href="index.html">Start</a>
+	          <a class="nav-link" href="gallerie.html">Galerie</a>
+	          <a class="nav-link" href="kontakt.html">Kontakt</a>
+	          <a class="nav-link is-faint" href="impressum.html">Impressum</a>
+	          <a class="nav-link is-faint" href="datenschutz.html">Datenschutz</a>
+	        </nav>
 	      </div>
 	    </footer>
 

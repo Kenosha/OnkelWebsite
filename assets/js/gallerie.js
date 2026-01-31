@@ -500,6 +500,7 @@ function renderGallery(root, manifest) {
   for (const cat of categories) {
     const section = document.createElement("section");
     section.className = "section";
+    if (cat?.id) section.setAttribute("data-gallery-cat", String(cat.id));
 
     const container = document.createElement("div");
     container.className = "container";
@@ -510,11 +511,6 @@ function renderGallery(root, manifest) {
     const h2 = document.createElement("h2");
     h2.textContent = String(cat?.title || "");
     head.appendChild(h2);
-
-    const desc = document.createElement("p");
-    desc.className = "muted";
-    desc.textContent = String(cat?.subtitle || "");
-    if (desc.textContent) head.appendChild(desc);
 
     container.appendChild(head);
 
