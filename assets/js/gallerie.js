@@ -8,11 +8,145 @@ const DEFAULT_HOLD = 4;
 const MAX_IMAGES_PER_SET = 60;
 const MAX_CONSECUTIVE_MISSES_AFTER_HIT = 2;
 const MANUAL_GRACE_MS = 10_000;
+const SLIDER_CONTROLLER_KEY = "__onkelSliderController";
 
 // Debug/Smoke-Test: zeigt, ob das Script überhaupt geladen wurde.
 window.__onkelGalleryLoaded = true;
 
 let cachedActiveCollection = null;
+let lightboxState = null;
+
+function ensureLightbox() {
+  if (lightboxState) return lightboxState;
+
+  const overlay = document.createElement("div");
+  overlay.className = "lightbox";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-label", "Bildvorschau");
+  overlay.innerHTML = `
+    <div class="lightbox-inner" role="document">
+      <header class="lightbox-head">
+        <p class="lightbox-title" data-lightbox-title></p>
+        <button type="button" class="lightbox-close" aria-label="Schließen" data-lightbox-close>
+          <span aria-hidden="true">×</span>
+        </button>
+      </header>
+      <div class="lightbox-viewport" data-lightbox-viewport>
+        <img class="lightbox-img" data-lightbox-img alt="" />
+        <button type="button" class="slider-nav prev" aria-label="Vorheriges Bild" data-lightbox-prev>
+          <span aria-hidden="true">‹</span>
+        </button>
+        <button type="button" class="slider-nav next" aria-label="Nächstes Bild" data-lightbox-next>
+          <span aria-hidden="true">›</span>
+        </button>
+      </div>
+      <p class="lightbox-caption muted small" data-lightbox-caption></p>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  const img = overlay.querySelector("[data-lightbox-img]");
+  const caption = overlay.querySelector("[data-lightbox-caption]");
+  const title = overlay.querySelector("[data-lightbox-title]");
+  const closeBtn = overlay.querySelector("[data-lightbox-close]");
+  const prevBtn = overlay.querySelector("[data-lightbox-prev]");
+  const nextBtn = overlay.querySelector("[data-lightbox-next]");
+  const viewport = overlay.querySelector("[data-lightbox-viewport]");
+
+  function isOpen() {
+    return overlay.classList.contains("is-open");
+  }
+
+  function setOpen(open) {
+    overlay.classList.toggle("is-open", Boolean(open));
+    document.body.classList.toggle("is-modal-open", Boolean(open));
+  }
+
+  function close() {
+    if (!isOpen()) return;
+    const controller = lightboxState?.controller || null;
+    setOpen(false);
+    if (controller?.startAuto) {
+      controller.pause?.(MANUAL_GRACE_MS);
+      controller.startAuto();
+    }
+    lightboxState.controller = null;
+  }
+
+  function syncFromController() {
+    const controller = lightboxState?.controller || null;
+    if (!controller || !img) return;
+    const current = controller.getCurrent?.() || null;
+    if (!current) return;
+    img.src = current.url || "";
+    img.alt = current.alt || "";
+    if (title) title.textContent = current.title || "";
+    if (caption) caption.textContent = current.caption || "";
+  }
+
+  function stepPrev() {
+    const controller = lightboxState?.controller || null;
+    if (!controller) return;
+    controller.prev?.();
+    syncFromController();
+  }
+
+  function stepNext() {
+    const controller = lightboxState?.controller || null;
+    if (!controller) return;
+    controller.next?.();
+    syncFromController();
+  }
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) close();
+  });
+
+  closeBtn?.addEventListener("click", close);
+  prevBtn?.addEventListener("click", stepPrev);
+  nextBtn?.addEventListener("click", stepNext);
+
+  viewport?.addEventListener("click", (e) => {
+    // Klick auf das Bild selbst schließt nicht; nur außerhalb (Overlay).
+    if (e.target.closest?.(".slider-nav")) return;
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (!isOpen()) return;
+    if (e.key === "Escape") {
+      e.preventDefault();
+      close();
+      return;
+    }
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      stepPrev();
+      return;
+    }
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      stepNext();
+      return;
+    }
+  });
+
+  lightboxState = {
+    overlay,
+    controller: null,
+    open(controller) {
+      if (!controller) return;
+      lightboxState.controller = controller;
+      controller.stopAuto?.();
+      setOpen(true);
+      syncFromController();
+      closeBtn?.focus?.();
+    },
+  };
+
+  return lightboxState;
+}
 
 async function getActiveCollection() {
   if (cachedActiveCollection !== null) return cachedActiveCollection;
@@ -103,6 +237,7 @@ function setupGroupedSliderWithResolvedSets(sliderRoot, sets) {
   const captionEl = sliderRoot.querySelector("[data-slider-caption]");
   const btnPrev = sliderRoot.querySelector("[data-slider-prev]");
   const btnNext = sliderRoot.querySelector("[data-slider-next]");
+  const viewport = sliderRoot.querySelector("[data-slider-viewport]");
   if (!img) return;
 
   const title = sliderRoot.querySelector("h3")?.textContent?.trim() || "Platzhalter";
@@ -133,6 +268,11 @@ function setupGroupedSliderWithResolvedSets(sliderRoot, sets) {
   let timer = null;
   let resumeTimeout = null;
   let pausedUntil = 0;
+
+  function currentUrl() {
+    const set = normalizedSets[currentSetIndex];
+    return set?.images?.[currentImageIndex] || fallback;
+  }
 
   function setCaption() {
     if (!captionEl) return;
@@ -255,17 +395,34 @@ function setupGroupedSliderWithResolvedSets(sliderRoot, sets) {
     timer = null;
   }
 
+  const controller = {
+    next: nextManual,
+    prev: prevManual,
+    stopAuto: stop,
+    startAuto: start,
+    pause: pauseAutoFor,
+    getCurrent() {
+      const set = normalizedSets[currentSetIndex];
+      return {
+        url: currentUrl(),
+        caption: set?.caption || "",
+        title,
+        alt: `${title} – Bildvorschau`,
+      };
+    },
+  };
+  sliderRoot[SLIDER_CONTROLLER_KEY] = controller;
+
   img.addEventListener("error", () => {
     // Wenn die lokalen JPGs noch nicht generiert wurden, vermeiden wir das "broken image" Icon.
     stop();
     img.src = fallback;
   });
 
-  img.addEventListener("click", () => {
-    // Kleine Bedienhilfe: Klick = nächstes Bild
-    if (totalImages() <= 1) return;
-    nextManual();
-    pauseAutoFor(MANUAL_GRACE_MS);
+  viewport?.addEventListener("click", (e) => {
+    if (e.target.closest?.(".slider-nav")) return;
+    const lb = ensureLightbox();
+    lb.open(controller);
   });
 
   if (btnPrev) {
