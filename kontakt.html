@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Kontakt – Anfrage, Bestellung oder Frage." />
-    <title>Onkels Werkstatt – Kontakt</title>
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <title>Onkel's Kunsthandwerk – Kontakt</title>
+    <link rel="stylesheet" href="assets/css/styles.css?v=2026_01_28_3" />
     <script defer src="assets/js/main.js"></script>
   </head>
   <body>
@@ -13,7 +13,7 @@
       <div class="container header-inner">
         <a class="brand" href="index.html" aria-label="Zur Startseite">
           <span class="brand-mark" aria-hidden="true"></span>
-          <span class="brand-text">Onkels Werkstatt</span>
+          <span class="brand-text">Onkel's Kunsthandwerk</span>
         </a>
         <nav class="nav" aria-label="Hauptnavigation">
           <a class="nav-link" href="index.html">Start</a>
@@ -27,54 +27,173 @@
       <section class="page-head">
         <div class="container">
           <h1>Kontakt</h1>
-          <p class="lead">
-            Du möchtest ein Stück anfragen, etwas personalisieren oder einfach Hallo sagen?
-          </p>
-        </div>
-      </section>
+	          <p class="lead">Du möchtest etwas anfragen oder einen Wunsch mitteilen? Schreib gern.</p>
+	        </div>
+	      </section>
 
       <section class="section">
         <div class="container">
           <div class="grid two">
             <article class="card">
               <h2>Direkt schreiben</h2>
-              <p class="muted">
-                Platzhalter – trage hier später E-Mail, Telefon oder Social Media ein.
-              </p>
+              <p class="muted">Am schnellsten geht’s per E‑Mail.</p>
               <p>
-                <a class="btn primary" href="mailto:beispiel@domain.de">E-Mail senden</a>
+                <a class="btn primary" href="mailto:orlando@matteo-orlando.de">E‑Mail senden</a>
               </p>
-              <p class="muted small">
-                Hinweis: Für echte Adressen/Telefonnummern bitte die Platzhalter ersetzen.
-              </p>
+              <p class="muted small">Adresse: orlando@matteo-orlando.de</p>
             </article>
 
             <article class="card">
-              <h2>Kurzformular</h2>
-              <p class="muted">Einfach, ohne Backend – öffnet dein E-Mail-Programm.</p>
-              <form class="form" action="mailto:beispiel@domain.de" method="post" enctype="text/plain">
+              <h2>Kontaktformular</h2>
+              <p class="muted">
+                Deine Nachricht wird als Anfrage übermittelt. (Hinweis: Bitte keine sensiblen Daten
+                senden.)
+              </p>
+              <form
+                id="kontaktForm"
+                class="form"
+                action="https://script.google.com/macros/s/AKfycbzUYhyRtAsWhXpVZufQHZrpM9x5Qy4UNW7GUbYiCDZJzgrGrNwfxeCY5z4UgbFHdH8u/exec"
+                method="post"
+              >
+                <input
+                  type="text"
+                  name="hp"
+                  tabindex="-1"
+                  autocomplete="off"
+                  aria-hidden="true"
+                  style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden"
+                />
                 <label>
                   Name
-                  <input type="text" name="name" placeholder="Dein Name" autocomplete="name" />
+                  <input
+                    id="kontaktName"
+                    type="text"
+                    name="name"
+                    placeholder="Dein Name"
+                    autocomplete="name"
+                    required
+                  />
                 </label>
                 <label>
-                  Nachricht
-                  <textarea name="nachricht" rows="5" placeholder="Worum geht es?"></textarea>
+                  E‑Mail
+                  <input
+                    id="kontaktEmail"
+                    type="email"
+                    name="email"
+                    placeholder="du@beispiel.de"
+                    autocomplete="email"
+                    required
+                  />
                 </label>
-                <button class="btn" type="submit">Nachricht vorbereiten</button>
+                <label>
+                  Telefon (optional)
+                  <input
+                    id="kontaktTelefon"
+                    type="tel"
+                    name="telefon"
+                    placeholder="+49 …"
+                    autocomplete="tel"
+                  />
+                </label>
+                <label>
+                  Betreff (optional)
+                  <input
+                    id="kontaktBetreff"
+                    type="text"
+                    name="betreff"
+                    placeholder="Worum geht es?"
+                  />
+                </label>
+                <label>
+                  Nachricht / Wunsch
+                  <textarea
+                    id="kontaktNachricht"
+                    name="nachricht"
+                    rows="5"
+                    placeholder="Beschreibe kurz deine Anfrage oder deinen Wunsch."
+                    required
+                  ></textarea>
+                </label>
+                <button class="btn" type="submit">Nachricht senden</button>
               </form>
+              <div class="muted small" id="kontaktStatus" aria-live="polite" style="margin-top:10px"></div>
             </article>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p class="muted">© <span data-year></span> Onkels Werkstatt</p>
-        <p class="muted">Kontaktseite – Platzhalter bis echte Daten eingetragen sind.</p>
-      </div>
-    </footer>
-  </body>
-</html>
+	    <footer class="site-footer">
+	      <div class="container footer-inner">
+	        <p class="muted">© <span data-year></span> Onkel's Kunsthandwerk</p>
+	        <p class="muted">Kontakt – wir melden uns so bald wie möglich.</p>
+	      </div>
+	    </footer>
 
+	    <div class="toast" id="kontaktToast" role="status" aria-live="polite" aria-atomic="true">
+	      <div class="toast-inner">
+	        <div class="toast-text" id="kontaktToastText"></div>
+	        <div class="toast-actions">
+	          <a class="toast-link" href="mailto:orlando@matteo-orlando.de" id="kontaktToastMail"
+	            >Oder per E‑Mail</a
+	          >
+	          <button class="btn" type="button" id="kontaktToastClose">OK</button>
+	        </div>
+	      </div>
+	    </div>
+
+	    <script>
+	      const form = document.getElementById("kontaktForm");
+	      const statusEl = document.getElementById("kontaktStatus");
+	      const toast = document.getElementById("kontaktToast");
+	      const toastText = document.getElementById("kontaktToastText");
+	      const toastClose = document.getElementById("kontaktToastClose");
+
+	      if (form) {
+	        const showToast = (text) => {
+	          if (toastText) toastText.textContent = text;
+	          if (toast) toast.classList.add("is-visible");
+	        };
+
+	        const hideToast = () => {
+	          if (toast) toast.classList.remove("is-visible");
+	        };
+
+	        if (toastClose) toastClose.addEventListener("click", hideToast);
+	        if (toast) toast.addEventListener("click", (e) => {
+	          if (e.target === toast) hideToast();
+	        });
+
+	        form.addEventListener("submit", async (e) => {
+	          e.preventDefault();
+
+	          const button = form.querySelector('button[type="submit"]');
+	          if (button) {
+	            button.disabled = true;
+	            button.textContent = "Sende…";
+	          }
+
+	          if (statusEl) statusEl.textContent = "";
+
+	          const endpoint = form.action;
+	          const fd = new FormData(form);
+	          const payload = new URLSearchParams();
+	          for (const [key, value] of fd.entries()) payload.append(key, String(value));
+
+	          try {
+	            await fetch(endpoint, { method: "POST", body: payload, mode: "no-cors" });
+	            form.reset();
+	            showToast("Danke! Deine Nachricht wurde gesendet.");
+	          } catch {
+	            showToast("Netzwerkfehler. Bitte versuche es erneut oder schreibe per E‑Mail.");
+	          } finally {
+	            if (button) {
+	              button.disabled = false;
+	              button.textContent = "Nachricht senden";
+	            }
+	          }
+	        });
+	      }
+	    </script>
+	  </body>
+	</html>

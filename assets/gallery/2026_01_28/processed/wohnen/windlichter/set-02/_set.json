@@ -1,0 +1,12 @@
+{
+  "caption": "Warme Beleuchtung",
+  "hold": 4,
+  "sources": [
+    "assets/gallery/2026_01_28/original/wohnen/windlichter/warme_beleuchtung/IMG_0420.HEIC",
+    "assets/gallery/2026_01_28/original/wohnen/windlichter/warme_beleuchtung/IMG_0423.HEIC",
+    "assets/gallery/2026_01_28/original/wohnen/windlichter/warme_beleuchtung/IMG_0426.HEIC",
+    "assets/gallery/2026_01_28/original/wohnen/windlichter/warme_beleuchtung/IMG_0646.HEIC",
+    "assets/gallery/2026_01_28/original/wohnen/windlichter/warme_beleuchtung/IMG_0647.HEIC"
+  ],
+  "base": "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-02"
+}

@@ -1,51 +1,77 @@
-const EXTENSIONS = ["avif", "webp", "jpg", "jpeg", "png", "svg"];
-const MAX_IMAGES_PER_SLIDER = 12;
 const DEFAULT_INTERVAL_MS = 3400;
 const FADE_MS = 260;
+const ACTIVE_COLLECTION_PATH = "assets/gallery/_active_collection.txt";
+const DEFAULT_COLLECTION = "2026_01_28";
+const PROCESSED_INDEX_PATH = (collection) =>
+  `assets/gallery/${collection}/processed/index.json`;
+const DEFAULT_HOLD = 4;
+const MAX_IMAGES_PER_SET = 60;
+const MAX_CONSECUTIVE_MISSES_AFTER_HIT = 2;
+const MANUAL_GRACE_MS = 10_000;
 
-function pad2(number) {
-  return String(number).padStart(2, "0");
-}
+// Debug/Smoke-Test: zeigt, ob das Script überhaupt geladen wurde.
+window.__onkelGalleryLoaded = true;
 
-function probeImage(url) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(url);
-    img.onerror = () => reject(new Error("not found"));
-    img.src = url;
-  });
-}
+let cachedActiveCollection = null;
 
-async function findFirstExistingUrl(base, fileStem) {
-  for (const ext of EXTENSIONS) {
-    const url = `${base}/${fileStem}.${ext}`;
-    try {
-      return await probeImage(url);
-    } catch {
-      // try next extension
-    }
+async function getActiveCollection() {
+  if (cachedActiveCollection !== null) return cachedActiveCollection;
+  try {
+    const res = await fetch(ACTIVE_COLLECTION_PATH, { cache: "no-cache" });
+    if (!res.ok) throw new Error("not ok");
+    const text = (await res.text()).trim();
+    cachedActiveCollection = text || DEFAULT_COLLECTION;
+  } catch {
+    cachedActiveCollection = DEFAULT_COLLECTION;
   }
-  return null;
+  return cachedActiveCollection;
 }
 
-async function collectSliderImages(base) {
+async function fetchJson(path) {
+  const res = await fetch(path, { cache: "no-cache" });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return await res.json();
+}
+
+function pad3(number) {
+  return String(number).padStart(3, "0");
+}
+
+async function urlExists(url) {
+  try {
+    const res = await fetch(url, { method: "HEAD", cache: "no-cache" });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function collectNumberedJpgs(base) {
   const urls = [];
-  let consecutiveMissesAfterFirstHit = 0;
-  for (let i = 1; i <= MAX_IMAGES_PER_SLIDER; i++) {
-    const fileStem = pad2(i);
-    const url = await findFirstExistingUrl(base, fileStem);
-    if (url) {
+  let consecutiveMissesAfterHit = 0;
+  for (let i = 1; i <= MAX_IMAGES_PER_SET; i++) {
+    const url = `${base}/${pad3(i)}.jpg`;
+    // HEAD ist günstig (lädt nicht das ganze Bild); funktioniert lokal (python http.server) und auf CDNs.
+    const exists = await urlExists(url);
+    if (exists) {
       urls.push(url);
-      consecutiveMissesAfterFirstHit = 0;
+      consecutiveMissesAfterHit = 0;
       continue;
     }
 
     if (urls.length > 0) {
-      consecutiveMissesAfterFirstHit++;
-      if (consecutiveMissesAfterFirstHit >= 2) break;
+      consecutiveMissesAfterHit++;
+      if (consecutiveMissesAfterHit >= MAX_CONSECUTIVE_MISSES_AFTER_HIT) break;
     }
   }
   return urls;
+}
+
+function deriveBaseFromImages(images) {
+  if (!Array.isArray(images) || images.length === 0) return "";
+  const first = String(images[0] || "");
+  // Erwartet .../001.jpg
+  return first.replace(/\/001\.jpg$/i, "");
 }
 
 function prefersReducedMotion() {
@@ -72,59 +98,138 @@ function createFallbackSvgDataUrl(title) {
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
-function setupSlider(sliderRoot, imageUrls) {
+function setupGroupedSliderWithResolvedSets(sliderRoot, sets) {
   const img = sliderRoot.querySelector("[data-slider-img]");
-  const badge = sliderRoot.querySelector("[data-slider-index]");
+  const captionEl = sliderRoot.querySelector("[data-slider-caption]");
+  const btnPrev = sliderRoot.querySelector("[data-slider-prev]");
+  const btnNext = sliderRoot.querySelector("[data-slider-next]");
   if (!img) return;
+
+  const title = sliderRoot.querySelector("h3")?.textContent?.trim() || "Platzhalter";
+  const fallback = createFallbackSvgDataUrl(title);
+
+  const normalizedSets = (sets || [])
+    .map((s) => ({
+      caption: String(s?.caption || ""),
+      hold: Number.isFinite(Number(s?.hold)) ? Number(s.hold) : DEFAULT_HOLD,
+      images: Array.isArray(s?.images) ? s.images.map(String).filter(Boolean) : [],
+    }))
+    .filter((s) => s.images.length > 0);
+
+  if (normalizedSets.length === 0) {
+    img.src = fallback;
+    if (captionEl) captionEl.textContent = "";
+    if (btnPrev) btnPrev.disabled = true;
+    if (btnNext) btnNext.disabled = true;
+    return;
+  }
 
   const reduced = prefersReducedMotion();
   const intervalMs = reduced ? 0 : DEFAULT_INTERVAL_MS;
 
-  let currentIndex = 0;
+  let currentSetIndex = 0;
+  let currentImageIndex = 0;
+  let holdCounter = 0;
   let timer = null;
+  let resumeTimeout = null;
+  let pausedUntil = 0;
 
-  function setBadge() {
-    if (!badge) return;
-    badge.textContent = `${currentIndex + 1}/${imageUrls.length}`;
+  function setCaption() {
+    if (!captionEl) return;
+    const set = normalizedSets[currentSetIndex];
+    captionEl.textContent = set.caption || "";
   }
 
-  function setImage(index, withFade) {
-    const nextUrl = imageUrls[index];
+  function setImage(withFade) {
+    const set = normalizedSets[currentSetIndex];
+    const nextUrl = set.images[currentImageIndex] || fallback;
     if (!nextUrl) return;
 
     if (!withFade || reduced) {
       img.src = nextUrl;
-      setBadge();
+      setCaption();
       return;
     }
 
     img.classList.add("is-fading");
     window.setTimeout(() => {
       img.src = nextUrl;
-      setBadge();
+      setCaption();
       img.classList.remove("is-fading");
     }, FADE_MS);
   }
 
-  function preload(index) {
-    const url = imageUrls[index];
+  function preload(url) {
     if (!url) return;
     const pre = new Image();
     pre.src = url;
   }
 
-  function next() {
-    currentIndex = (currentIndex + 1) % imageUrls.length;
-    setImage(currentIndex, true);
-    preload((currentIndex + 1) % imageUrls.length);
+  function totalImages() {
+    return normalizedSets.reduce((acc, s) => acc + s.images.length, 0);
+  }
+
+  function updateControlsEnabled() {
+    const enabled = totalImages() > 1;
+    if (btnPrev) btnPrev.disabled = !enabled;
+    if (btnNext) btnNext.disabled = !enabled;
+  }
+
+  function nextAuto() {
+    const set = normalizedSets[currentSetIndex];
+    const hold = Math.max(1, Number.isFinite(set.hold) ? set.hold : DEFAULT_HOLD);
+
+    holdCounter++;
+    if (holdCounter >= hold) {
+      holdCounter = 0;
+      currentSetIndex = (currentSetIndex + 1) % normalizedSets.length;
+      currentImageIndex = 0;
+    } else {
+      currentImageIndex = (currentImageIndex + 1) % set.images.length;
+    }
+
+    const newSet = normalizedSets[currentSetIndex];
+    const nextUrl = newSet.images[(currentImageIndex + 1) % newSet.images.length];
+    setImage(true);
+    preload(nextUrl);
+  }
+
+  function nextManual() {
+    const set = normalizedSets[currentSetIndex];
+    holdCounter = 0;
+    currentImageIndex = (currentImageIndex + 1) % set.images.length;
+    const nextUrl = set.images[(currentImageIndex + 1) % set.images.length];
+    setImage(true);
+    preload(nextUrl);
+  }
+
+  function prevManual() {
+    const set = normalizedSets[currentSetIndex];
+    holdCounter = 0;
+    currentImageIndex = (currentImageIndex - 1 + set.images.length) % set.images.length;
+    const nextUrl = set.images[(currentImageIndex - 1 + set.images.length) % set.images.length];
+    setImage(true);
+    preload(nextUrl);
+  }
+
+  function pauseAutoFor(ms) {
+    if (!ms || reduced) return;
+    pausedUntil = Date.now() + ms;
+    if (resumeTimeout) window.clearTimeout(resumeTimeout);
+    resumeTimeout = window.setTimeout(() => {
+      if (Date.now() >= pausedUntil) pausedUntil = 0;
+      resumeTimeout = null;
+    }, ms);
   }
 
   function start() {
-    if (!intervalMs || imageUrls.length <= 1) return;
+    if (!intervalMs) return;
+    if (totalImages() <= 1) return;
     stop();
     timer = window.setInterval(() => {
       if (document.visibilityState !== "visible") return;
-      next();
+      if (pausedUntil && Date.now() < pausedUntil) return;
+      nextAuto();
     }, intervalMs);
   }
 
@@ -133,15 +238,38 @@ function setupSlider(sliderRoot, imageUrls) {
     timer = null;
   }
 
-  img.addEventListener("click", () => {
-    // Kleine Bedienhilfe: Klick = nächstes Bild
-    if (imageUrls.length <= 1) return;
-    next();
-    start();
+  img.addEventListener("error", () => {
+    // Wenn die lokalen JPGs noch nicht generiert wurden, vermeiden wir das "broken image" Icon.
+    stop();
+    img.src = fallback;
   });
 
-  setImage(0, false);
-  preload(1);
+  img.addEventListener("click", () => {
+    // Kleine Bedienhilfe: Klick = nächstes Bild
+    if (totalImages() <= 1) return;
+    nextManual();
+    pauseAutoFor(MANUAL_GRACE_MS);
+  });
+
+  if (btnPrev) {
+    btnPrev.addEventListener("click", () => {
+      if (totalImages() <= 1) return;
+      prevManual();
+      pauseAutoFor(MANUAL_GRACE_MS);
+    });
+  }
+
+  if (btnNext) {
+    btnNext.addEventListener("click", () => {
+      if (totalImages() <= 1) return;
+      nextManual();
+      pauseAutoFor(MANUAL_GRACE_MS);
+    });
+  }
+
+  setImage(false);
+  preload(normalizedSets[0].images[1] || null);
+  updateControlsEnabled();
   start();
 
   document.addEventListener("visibilitychange", () => {
@@ -149,25 +277,202 @@ function setupSlider(sliderRoot, imageUrls) {
   });
 }
 
-async function initGallery() {
-  const sliderRoots = [...document.querySelectorAll("[data-slider]")];
-  if (sliderRoots.length === 0) return;
+async function setupGroupedSlider(sliderRoot, sets) {
+  // Sets können entweder:
+  // - bereits `images` enthalten (schnell), oder
+  // - nur `base` enthalten (dann probieren wir 001.jpg, 002.jpg, ... direkt aus processed/).
+  const resolved = [];
+  for (const s of sets || []) {
+    const caption = String(s?.caption || "");
+    const hold = Number.isFinite(Number(s?.hold)) ? Number(s.hold) : DEFAULT_HOLD;
+    const explicitImages = Array.isArray(s?.images) ? s.images.map(String).filter(Boolean) : [];
+    const base = String(s?.base || deriveBaseFromImages(explicitImages) || "");
 
-  await Promise.all(
-    sliderRoots.map(async (root) => {
-      const base = root.getAttribute("data-base");
-      const title = root.querySelector("h3")?.textContent?.trim() || "Platzhalter";
+    let images = explicitImages;
+    if (base) {
+      const probed = await collectNumberedJpgs(base);
+      if (probed.length > 0) images = probed;
+    }
 
-      let urls = [];
-      if (base) urls = await collectSliderImages(base);
+    if (images.length > 0) resolved.push({ caption, hold, images });
+  }
 
-      if (urls.length === 0) {
-        urls = [createFallbackSvgDataUrl(title)];
+  setupGroupedSliderWithResolvedSets(sliderRoot, resolved);
+}
+
+function renderGallery(root, manifest) {
+  if (!root) return;
+  root.innerHTML = "";
+
+  const categories = Array.isArray(manifest?.categories) ? manifest.categories : [];
+  if (categories.length === 0) {
+    const section = document.createElement("section");
+    section.className = "section";
+    section.innerHTML = `
+      <div class="container">
+        <div class="card">
+          <h2>Galerie wird vorbereitet</h2>
+          <p class="muted">
+            Es wurden noch keine Galerie-Daten gefunden. Erzeuge sie lokal aus dem Ordner
+            <code>assets/gallery/&lt;YYYY_MM_DD&gt;/original/</code>.
+          </p>
+          <p class="muted small">Befehl: <code>python3 scripts/build_gallery_processed.py</code></p>
+        </div>
+      </div>
+    `;
+    root.appendChild(section);
+    return;
+  }
+  for (const cat of categories) {
+    const section = document.createElement("section");
+    section.className = "section";
+
+    const container = document.createElement("div");
+    container.className = "container";
+
+    const head = document.createElement("header");
+    head.className = "section-head";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = String(cat?.title || "");
+    head.appendChild(h2);
+
+    const desc = document.createElement("p");
+    desc.className = "muted";
+    desc.textContent = String(cat?.subtitle || "");
+    if (desc.textContent) head.appendChild(desc);
+
+    container.appendChild(head);
+
+    const grid = document.createElement("div");
+    grid.className = "gallery-grid";
+
+    const classes = Array.isArray(cat?.classes) ? cat.classes : [];
+    for (const cls of classes) {
+      const article = document.createElement("article");
+      article.className = "gallery-view";
+      article.setAttribute("data-slider", "");
+
+      const viewTop = document.createElement("div");
+      viewTop.className = "view-top";
+
+      const h3 = document.createElement("h3");
+      h3.textContent = String(cls?.title || "");
+      viewTop.appendChild(h3);
+
+      const subtitle = String(cls?.subtitle || "");
+      if (subtitle) {
+        const p = document.createElement("p");
+        p.className = "muted";
+        p.textContent = subtitle;
+        viewTop.appendChild(p);
       }
 
-      setupSlider(root, urls);
-    }),
-  );
+      const caption = document.createElement("p");
+      caption.className = "muted small";
+      caption.setAttribute("data-slider-caption", "");
+      viewTop.appendChild(caption);
+
+      const slider = document.createElement("div");
+      slider.className = "slider";
+      slider.setAttribute("data-slider-viewport", "");
+
+      const img = document.createElement("img");
+      img.className = "slider-img";
+      img.setAttribute("data-slider-img", "");
+      img.alt = `${String(cls?.title || "Galerie")} – Beispiele`;
+      img.loading = "lazy";
+      slider.appendChild(img);
+
+      const prev = document.createElement("button");
+      prev.type = "button";
+      prev.className = "slider-nav prev";
+      prev.setAttribute("data-slider-prev", "");
+      prev.setAttribute("aria-label", "Vorheriges Bild");
+      prev.innerHTML = "<span aria-hidden=\"true\">‹</span>";
+      slider.appendChild(prev);
+
+      const next = document.createElement("button");
+      next.type = "button";
+      next.className = "slider-nav next";
+      next.setAttribute("data-slider-next", "");
+      next.setAttribute("aria-label", "Nächstes Bild");
+      next.innerHTML = "<span aria-hidden=\"true\">›</span>";
+      slider.appendChild(next);
+
+      article.appendChild(viewTop);
+      article.appendChild(slider);
+
+      grid.appendChild(article);
+
+      // async: lädt ggf. die nummerierten Bilder aus processed/ nach
+      void setupGroupedSlider(article, cls?.sets || []);
+    }
+
+    container.appendChild(grid);
+    section.appendChild(container);
+    root.appendChild(section);
+  }
+}
+
+async function initGallery() {
+  const root = document.querySelector("[data-gallery-root]");
+  if (!root) return;
+
+  try {
+    const collection = await getActiveCollection();
+    const indexPath = PROCESSED_INDEX_PATH(collection);
+
+    root.innerHTML = `
+      <section class="section">
+        <div class="container">
+          <div class="card">
+            <h2>Galerie lädt…</h2>
+            <p class="muted small">
+              Collection: <code>${collection}</code> · Index: <code>${indexPath}</code>
+            </p>
+          </div>
+        </div>
+      </section>
+    `;
+
+    if (location.protocol === "file:") {
+      root.innerHTML = `
+        <section class="section">
+          <div class="container">
+            <div class="card">
+              <h2>Lokal testen</h2>
+              <p class="muted">
+                Öffne die Seite bitte über einen lokalen Server (nicht <code>file://</code>), sonst
+                dürfen Browser keine JSON-Dateien laden.
+              </p>
+              <p class="muted small">
+                Starte z.B. <code>python3 -m http.server 8000</code> und öffne dann
+                <code>http://localhost:8000/gallerie.html</code>.
+              </p>
+            </div>
+          </div>
+        </section>
+      `;
+      return;
+    }
+
+    const manifest = await fetchJson(indexPath);
+    renderGallery(root, manifest);
+  } catch (err) {
+    const msg = String(err?.message || err || "Unbekannter Fehler");
+    root.innerHTML = `
+      <section class="section">
+        <div class="container">
+          <div class="card">
+            <h2>Galerie-Fehler</h2>
+            <p class="muted small"><code>${msg}</code></p>
+            <p class="muted small">Tipp: <code>python3 scripts/build_gallery_processed.py</code></p>
+          </div>
+        </div>
+      </section>
+    `;
+  }
 }
 
 if (document.readyState === "loading") {

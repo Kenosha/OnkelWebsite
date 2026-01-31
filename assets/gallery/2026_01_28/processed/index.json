@@ -1,0 +1,487 @@
+{
+  "collection": "2026_01_28",
+  "generated_at": "2026-01-28T18:40:39.536731+00:00",
+  "categories": [
+    {
+      "id": "leucht",
+      "title": "Leuchtkunst",
+      "subtitle": "Fluoreszente Acrylglas-Scheiben mit Punktmuster und Leuchtfarbe",
+      "order": 10,
+      "classes": [
+        {
+          "id": "leuchtbilder",
+          "title": "Leuchtbilder",
+          "subtitle": "",
+          "order": 10,
+          "sets": [
+            {
+              "caption": "Auf Anfrage das Perfekte Persönliche Geschenk",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-01/003.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-01/004.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-01/005.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-01/006.jpg"
+              ]
+            },
+            {
+              "caption": "Leuchtet im Dunkeln",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-02",
+              "images": [
+                "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-02/001.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-02/002.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "leuchtuhren",
+          "title": "Leuchtuhren",
+          "subtitle": "",
+          "order": 20,
+          "sets": [
+            {
+              "caption": "Bunt",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01/003.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01/004.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01/005.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01/006.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01/007.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01/008.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-01/009.jpg"
+              ]
+            },
+            {
+              "caption": "Geschenk oder Visitenkarte",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02",
+              "images": [
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02/001.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02/002.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02/003.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02/004.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02/005.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02/006.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02/007.jpg"
+              ]
+            },
+            {
+              "caption": "Leuchtet im Dunkeln",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03",
+              "images": [
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03/001.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03/002.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03/003.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03/004.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03/005.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03/006.jpg",
+                "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03/007.jpg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "objekt",
+      "title": "Objektkunst",
+      "subtitle": "Eigenartige Formen, Materialspiel und überraschende Perspektiven",
+      "order": 20,
+      "classes": [
+        {
+          "id": "ketten",
+          "title": "Ketten",
+          "subtitle": "",
+          "order": 10,
+          "sets": [
+            {
+              "caption": "Einzigartig",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/objekt/ketten/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/objekt/ketten/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/ketten/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/ketten/set-01/003.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/ketten/set-01/004.jpg"
+              ]
+            },
+            {
+              "caption": "Modular",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/objekt/ketten/set-02",
+              "images": [
+                "assets/gallery/2026_01_28/processed/objekt/ketten/set-02/001.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/ketten/set-02/002.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/ketten/set-02/003.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "unmoegliche_objekte",
+          "title": "Unmögliche Objekte",
+          "subtitle": "",
+          "order": 20,
+          "sets": [
+            {
+              "caption": "Personalisierbar",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-01/003.jpg"
+              ]
+            },
+            {
+              "caption": "Stilvoll",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-02",
+              "images": [
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-02/001.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-02/002.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-02/003.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-02/004.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-02/005.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-02/006.jpg"
+              ]
+            },
+            {
+              "caption": "Vielseitig Einsetzbar",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-03",
+              "images": [
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-03/001.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-03/002.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-03/003.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-03/004.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-03/005.jpg"
+              ]
+            },
+            {
+              "caption": "Wirft Fragen auf",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04",
+              "images": [
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04/001.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04/002.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04/003.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04/004.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04/005.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04/006.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04/007.jpg",
+                "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04/008.jpg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wohnen",
+      "title": "Wohnen & Deko",
+      "subtitle": "Handgemachte Stücke für Zuhause – von Kerzen bis Ornamenten",
+      "order": 30,
+      "classes": [
+        {
+          "id": "blumenvasen",
+          "title": "Blumenvasen",
+          "subtitle": "",
+          "order": 10,
+          "sets": [
+            {
+              "caption": "Wenn Blumen nicht Reichen",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/wohnen/blumenvasen/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/wohnen/blumenvasen/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/blumenvasen/set-01/002.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kerzenhalter",
+          "title": "Kerzenhalter",
+          "subtitle": "",
+          "order": 20,
+          "sets": [
+            {
+              "caption": "Modular",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-01/003.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-01/004.jpg"
+              ]
+            },
+            {
+              "caption": "Personalisierbar",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-02",
+              "images": [
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-02/001.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-02/002.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-02/003.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-02/004.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-02/005.jpg"
+              ]
+            },
+            {
+              "caption": "Variantenreich",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03",
+              "images": [
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03/001.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03/002.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03/003.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03/004.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03/005.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03/006.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03/007.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03/008.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03/009.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ornamente",
+          "title": "Ornamente",
+          "subtitle": "",
+          "order": 30,
+          "sets": [
+            {
+              "caption": "Handgegossen und Selbstgefertigt",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/wohnen/ornamente/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/wohnen/ornamente/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/ornamente/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/ornamente/set-01/003.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "teelicht_karousel",
+          "title": "Teelicht Karousel",
+          "subtitle": "",
+          "order": 40,
+          "sets": [
+            {
+              "caption": "Alle Anlässe",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-01/003.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-01/004.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-01/005.jpg"
+              ]
+            },
+            {
+              "caption": "Personalisierbar",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-02",
+              "images": [
+                "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-02/001.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-02/002.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-02/003.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-02/004.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-02/005.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "windlichter",
+          "title": "Windlichter",
+          "subtitle": "",
+          "order": 50,
+          "sets": [
+            {
+              "caption": "Auswechselbar",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-01/003.jpg"
+              ]
+            },
+            {
+              "caption": "Warme Beleuchtung",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-02",
+              "images": [
+                "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-02/001.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-02/002.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-02/003.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-02/004.jpg",
+                "assets/gallery/2026_01_28/processed/wohnen/windlichter/set-02/005.jpg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kueche",
+      "title": "Küche & Genuss",
+      "subtitle": "Praktisch, stilvoll und ein Gesprächsstarter am Tisch",
+      "order": 40,
+      "classes": [
+        {
+          "id": "flaschenhalter",
+          "title": "Flaschenhalter",
+          "subtitle": "",
+          "order": 10,
+          "sets": [
+            {
+              "caption": "Personalisierbar",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-01/003.jpg"
+              ]
+            },
+            {
+              "caption": "Stilvoll",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-02",
+              "images": [
+                "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-02/001.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-02/002.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-02/003.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-02/004.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-02/005.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-02/006.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gabeln",
+          "title": "Gabeln",
+          "subtitle": "",
+          "order": 20,
+          "sets": [
+            {
+              "caption": "Der Konversationsstarter zu Tisch",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/kueche/gabeln/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/kueche/gabeln/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/gabeln/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/gabeln/set-01/003.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/gabeln/set-01/004.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "korken",
+          "title": "Korken",
+          "subtitle": "",
+          "order": 30,
+          "sets": [
+            {
+              "caption": "Handgegossen und Edel",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/kueche/korken/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/kueche/korken/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/korken/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/kueche/korken/set-01/003.jpg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sonstiges",
+      "title": "Sonstiges",
+      "subtitle": "Alles, was nicht in die anderen Kategorien passt",
+      "order": 50,
+      "classes": [
+        {
+          "id": "anhaenger",
+          "title": "Anhänger",
+          "subtitle": "",
+          "order": 10,
+          "sets": [
+            {
+              "caption": "Variantenreich",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/sonstiges/anhaenger/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/sonstiges/anhaenger/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/sonstiges/anhaenger/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/sonstiges/anhaenger/set-01/003.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "spieluhren",
+          "title": "Spieluhren",
+          "subtitle": "",
+          "order": 20,
+          "sets": [
+            {
+              "caption": "Schenke Musik",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/sonstiges/spieluhren/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/sonstiges/spieluhren/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/sonstiges/spieluhren/set-01/002.jpg",
+                "assets/gallery/2026_01_28/processed/sonstiges/spieluhren/set-01/003.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "verpackung",
+          "title": "Verpackung",
+          "subtitle": "",
+          "order": 30,
+          "sets": [
+            {
+              "caption": "Stillvoll",
+              "hold": 4,
+              "base": "assets/gallery/2026_01_28/processed/sonstiges/verpackung/set-01",
+              "images": [
+                "assets/gallery/2026_01_28/processed/sonstiges/verpackung/set-01/001.jpg",
+                "assets/gallery/2026_01_28/processed/sonstiges/verpackung/set-01/002.jpg"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "classes": 15,
+    "sets": 27,
+    "images": 125,
+    "skipped_non_images": 8,
+    "failures": 0
+  }
+}
