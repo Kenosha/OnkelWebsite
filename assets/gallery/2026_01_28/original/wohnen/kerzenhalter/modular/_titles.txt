@@ -1,6 +1,6 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_6118.HEIC | 63
-IMG_6070.HEIC | 64
-IMG_1195.HEIC | 65
-IMG_2549.HEIC | 66
+IMG_6118.HEIC | perlmutt
+IMG_6070.HEIC | liebe
+IMG_1195.HEIC | glas
+IMG_2549.HEIC | gold

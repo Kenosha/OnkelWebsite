@@ -1,9 +1,9 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
 IMG_3381.HEIC | 25
-IMG_3376.heic | 26
-IMG_3445.heic | 27
+IMG_3376.heic | bud spencer
+IMG_3445.heic | padre pio
 IMG_0457.HEIC | 28
-IMG_0442.HEIC | 29
-IMG_3444.heic | 30
-IMG_3379.HEIC | 31
+IMG_0442.HEIC | elfi
+IMG_3444.heic | padre pio
+IMG_3379.HEIC | bud spencer

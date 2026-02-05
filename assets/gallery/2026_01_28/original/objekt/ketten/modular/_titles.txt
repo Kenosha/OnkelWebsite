@@ -1,5 +1,5 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_4055.JPG | 36
-IMG_4041.JPG | 37
-IMG_4042.JPG | 38
+IMG_4055.JPG | kettenuhr
+IMG_4041.JPG | leonardo
+IMG_4042.JPG | leonardo II

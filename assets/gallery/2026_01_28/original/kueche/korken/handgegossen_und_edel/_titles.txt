@@ -1,5 +1,5 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_4275.jpg | 115
-c58856bf-ddf1-4101-8175-0374e89d963e.JPG | 116
-IMG_4278.jpg | 117
+IMG_4275.jpg | drei affen
+c58856bf-ddf1-4101-8175-0374e89d963e.JPG | drei affen
+IMG_4278.jpg | golder

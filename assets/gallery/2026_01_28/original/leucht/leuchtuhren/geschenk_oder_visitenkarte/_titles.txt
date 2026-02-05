@@ -2,8 +2,8 @@
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
 IMG_3316.HEIC | 18
 IMG_3256.HEIC | 19
-IMG_3835.heic | 20
-IMG_3314.HEIC | 21
-IMG_9235.HEIC | 22
-IMG_3255.HEIC | 23
-IMG_9238.HEIC | 24
+IMG_3835.heic | auto
+IMG_3314.HEIC | portrait
+IMG_9235.HEIC | portrait II
+IMG_3255.HEIC | portrait III
+IMG_9238.HEIC | portrait II

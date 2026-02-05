@@ -1,11 +1,11 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_2556.HEIC | 72
-IMG_6005.HEIC | 73
-IMG_2548.HEIC | 74
-IMG_2560.HEIC | 75
-IMG_2836.HEIC | 76
-IMG_7596.HEIC | 77
-IMG_2570.HEIC | 78
-IMG_2551.HEIC | 79
-IMG_1201.HEIC | 80
+IMG_2556.HEIC | smaragd
+IMG_6005.HEIC | motiv iii
+IMG_2548.HEIC | gold
+IMG_2560.HEIC | rubin
+IMG_2836.HEIC | smaragd
+IMG_7596.HEIC | meteor
+IMG_2570.HEIC | rubin
+IMG_2551.HEIC | smaragd
+IMG_1201.HEIC | schwebe

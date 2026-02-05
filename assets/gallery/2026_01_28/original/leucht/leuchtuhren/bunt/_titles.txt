@@ -1,11 +1,11 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_9586.HEIC | 9
-IMG_9468.HEIC | 10
-IMG_9579.HEIC | 11
-IMG_9574.HEIC | 12
-IMG_9336.HEIC | 13
-IMG_9594.HEIC | 14
-IMG_9591.HEIC | 15
-IMG_9337.HEIC | 16
-IMG_9656.HEIC | 17
+IMG_9586.HEIC | pride
+IMG_9468.HEIC | pride
+IMG_9579.HEIC | pride II
+IMG_9574.HEIC | groovy
+IMG_9336.HEIC | heart
+IMG_9594.HEIC | groovy II
+IMG_9591.HEIC | pride III
+IMG_9337.HEIC | pride III
+IMG_9656.HEIC | aloha!

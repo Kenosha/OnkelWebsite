@@ -1,4 +1,4 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_9765.HEIC | 7
-IMG_9763.HEIC | 8
+IMG_9765.HEIC | jesus
+IMG_9763.HEIC | jesus

@@ -1,0 +1,121 @@
+1 fore!
+2 albert
+3 mekka
+4 pferd
+5 tennis
+6 katze
+7 jesus
+8 jesus
+9 pride
+10 pride
+11 pride II
+12 groovy
+13 heart
+14 groovy II
+15 pride III
+16 pride III
+17 aloha!
+18
+19
+20 auto
+21 portrait
+22 portrait II
+23 portrait III
+24 portrait II
+25
+26 bud spencer
+27 padre pio
+28
+29 elfi
+30 padre pio
+31 bud spencer
+32 kettenlicht I
+33 Ohne Titel I
+34 Kettenherz
+35 Kettenlich II
+36 kettenuhr
+37 leonardo
+38 leonardo II
+39 golf, durchstossen
+40 golf i
+41 gold ii
+42 In holz
+43 denker und ball
+44 denker und pfeil
+45 herz, durchstossen
+46 denker und pfeil II
+47 in holz
+48 uhr, herz, pfeil
+49 golf, durchstossen II
+50 golf iii
+51 uhr, herz, pfeil
+52 uhr, herz, pfeil
+53 glas, durchstossen
+54 gold, durchstossen III
+55 flasche, durchstossen
+56 denker und ball
+57 flaschengeruest
+58 tee-time
+59 ohne frosch
+60 flaschengeruest
+61 vase i
+62 vase ii
+63 perlmutt
+64 liebe
+65 glas
+66 gold
+67 rosen
+68 motiv
+69 motiv
+70 motiv
+71 motiv ii
+72 smaragd
+73 motiv iii
+74 gold
+75 rubin
+76 smaragd
+77 meteor
+78 rubin
+79 smaragd
+80 schwebe
+81 smaragd
+82 drei affen
+83 denker
+84 liebe
+85 glueckwunsch
+86 weihnachten
+87 liebe
+88 glueckwunsch ii
+89 glueckwunsch
+90 inschallah
+91 sicilia
+92 glueckwunsch iii
+93 pride
+94 cognac
+95 mescal
+96 bourbon
+97 cognac
+98 mescal
+99 bourbon
+100 creme brule
+101 creme brule
+102 horoskok
+103 wine time
+104 wine time
+105 schwebe-rebe
+106 schwebe-rebe
+107 silber
+108 glow
+109 meteor
+110 meteor
+111-114 V
+115-116 drei affen
+117 golder
+118 horoskop
+119 shine
+120 shine
+121 geburtstag
+122 hochzeit
+123 geburtstag ii
+124-125 schwarz und creme
+

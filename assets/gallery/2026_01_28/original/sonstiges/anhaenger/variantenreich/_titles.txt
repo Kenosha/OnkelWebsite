@@ -1,5 +1,5 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-anhaenger_korrigiert.png | 118
-elfi.JPG | 119
-elfi_leuchtet.JPG | 120
+anhaenger_korrigiert.png | horoskop
+elfi.JPG | shine
+elfi_leuchtet.JPG | shine

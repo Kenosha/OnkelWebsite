@@ -1,7 +1,7 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_5803.HEIC | 67
-IMG_5840.HEIC | 68
-IMG_5831.HEIC | 69
-IMG_5834.HEIC | 70
-IMG_5798.HEIC | 71
+IMG_5803.HEIC | rosen
+IMG_5840.HEIC | motiv
+IMG_5831.HEIC | motiv
+IMG_5834.HEIC | motiv
+IMG_5798.HEIC | motiv ii

@@ -1,5 +1,5 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_0421.HEIC | 94
-IMG_0424.HEIC | 95
-IMG_0425.HEIC | 96
+IMG_0421.HEIC | cognac
+IMG_0424.HEIC | mescal
+IMG_0425.HEIC | bourbon

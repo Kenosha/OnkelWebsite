@@ -1,5 +1,5 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_4617.JPG | 121
-IMG_4596.JPG | 122
-IMG_5078.JPG | 123
+IMG_4617.JPG | geburtstag
+IMG_4596.JPG | hochzeit
+IMG_5078.JPG | geburtstag ii

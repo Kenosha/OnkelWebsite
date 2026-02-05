@@ -1,8 +1,8 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-rebe_tisch.jpg | 105
-rebe_dunkel.JPG | 106
-IMG_3514.JPG | 107
-IMG_7923.HEIC | 108
-IMG_7612.HEIC | 109
-IMG_7617.HEIC | 110
+rebe_tisch.jpg | schwebe-rebe
+rebe_dunkel.JPG | schwebe-rebe
+IMG_3514.JPG | silber
+IMG_7923.HEIC | glow
+IMG_7612.HEIC | meteor
+IMG_7617.HEIC | meteor

@@ -1,10 +1,10 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-7d70e64e-27ac-41b3-83c9-d278d9726393.JPG | 53
-040ab3b1-bf7f-4472-b161-6f230ce17ed8.JPG | 54
-8622f28c-7ddb-428e-b09f-1d2fa507a904.JPG | 55
-IMG_2800.HEIC | 56
-IMG_6400.HEIC | 57
-IMG_4280.HEIC | 58
-IMG_4294.HEIC | 59
-IMG_6442.heic | 60
+7d70e64e-27ac-41b3-83c9-d278d9726393.JPG | glas, durchstossen
+040ab3b1-bf7f-4472-b161-6f230ce17ed8.JPG | gold, durchstossen III
+8622f28c-7ddb-428e-b09f-1d2fa507a904.JPG | flasche, durchstossen
+IMG_2800.HEIC | denker und ball
+IMG_6400.HEIC | flaschengeruest
+IMG_4280.HEIC | tee-time
+IMG_4294.HEIC | ohne frosch
+IMG_6442.heic | flaschengeruest

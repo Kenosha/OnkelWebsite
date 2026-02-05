@@ -1,6 +1,6 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_4146.JPG | 32
-IMG_4247.HEIC | 33
-IMG_3940.JPG | 34
-IMG_4143.JPG | 35
+IMG_4146.JPG | kettenlicht I
+IMG_4247.HEIC | Ohne Titel I
+IMG_3940.JPG | Kettenherz
+IMG_4143.JPG | Kettenlich II

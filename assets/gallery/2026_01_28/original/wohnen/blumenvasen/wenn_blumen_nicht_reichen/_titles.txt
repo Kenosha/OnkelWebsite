@@ -1,4 +1,4 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_6068.HEIC | 61
-IMG_0951.HEIC | 62
+IMG_6068.HEIC | vase i
+IMG_0951.HEIC | vase ii

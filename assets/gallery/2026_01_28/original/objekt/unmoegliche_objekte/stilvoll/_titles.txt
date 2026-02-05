@@ -1,8 +1,8 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_4277.HEIC | 42
-IMG_2802.HEIC | 43
-IMG_4144.HEIC | 44
-IMG_4155.HEIC | 45
-IMG_2807.HEIC | 46
-IMG_4276.HEIC | 47
+IMG_4277.HEIC | In holz
+IMG_2802.HEIC | denker und ball
+IMG_4144.HEIC | denker und pfeil
+IMG_4155.HEIC | herz, durchstossen
+IMG_2807.HEIC | denker und pfeil II
+IMG_4276.HEIC | in holz
