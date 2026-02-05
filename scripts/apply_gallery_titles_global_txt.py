@@ -12,13 +12,21 @@ Beispiele:
 Regeln:
 - Leere Titel (nur "18") -> Titel bleibt die Nummer.
 - Nummern-Bereiche ("111-114") -> gleicher Titel für alle Nummern im Bereich.
+
+Wichtig:
+- Die Nummerierung basiert auf der aktuellen Anzeige-Reihenfolge in
+  `assets/gallery/<collection>/processed/index.json`.
+- Daher: erst einmal `python3 scripts/build_gallery_processed.py` laufen lassen,
+  bevor du dieses Script benutzt (oder nachdem sich die Collection-Struktur geändert hat).
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
+from collections import defaultdict
 from pathlib import Path
 
 
@@ -33,6 +41,15 @@ def read_active_collection() -> str:
     if not value:
         raise SystemExit("Fehler: _active_collection.txt ist leer.")
     return value
+
+
+def load_json(path: Path) -> dict:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        raise SystemExit(f"Fehler: Datei nicht gefunden: {path}")
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"Fehler: Ungültiges JSON: {path} ({exc})")
 
 
 def parse_global_titles(path: Path) -> dict[int, str]:
@@ -66,35 +83,42 @@ def parse_global_titles(path: Path) -> dict[int, str]:
     return mapping
 
 
-def parse_titles_file(path: Path) -> list[tuple[str, str, str]]:
-    """
-    Returns list of (raw_line, filename, title). Comments/blank lines are returned as (raw, "", "").
-    """
-    rows: list[tuple[str, str, str]] = []
-    for raw in path.read_text(encoding="utf-8").splitlines():
-        line = raw.rstrip("\n")
-        stripped = line.strip()
-        if not stripped or stripped.startswith("#") or "|" not in line:
-            rows.append((line, "", ""))
-            continue
-        left, right = line.split("|", 1)
-        filename = left.strip()
-        title = right.strip()
-        rows.append((line, filename, title))
-    return rows
-
-
-def write_titles_file(path: Path, rows: list[tuple[str, str, str]], dry_run: bool) -> None:
-    out_lines: list[str] = []
-    for raw, filename, title in rows:
-        if not filename:
-            out_lines.append(raw)
-        else:
-            out_lines.append(f"{filename} | {title}")
-    content = "\n".join(out_lines) + "\n"
+def write_titles_file(path: Path, entries: list[tuple[str, str]], dry_run: bool) -> None:
+    lines: list[str] = [
+        "# Format: <Dateiname> | <Bildname>",
+        "# Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.",
+    ]
+    for filename, title in entries:
+        lines.append(f"{filename} | {title}")
+    content = "\n".join(lines) + "\n"
     if dry_run:
         return
     path.write_text(content, encoding="utf-8")
+
+
+def iter_sources_in_display_order(processed_root: Path) -> list[Path]:
+    """
+    Returns list of original source Paths in the order they appear in processed/index.json.
+    """
+    index_path = processed_root / "index.json"
+    index = load_json(index_path)
+
+    sources: list[Path] = []
+    for category in index.get("categories", []):
+        for cls in category.get("classes", []):
+            for set_entry in cls.get("sets", []):
+                base = set_entry.get("base")
+                if not isinstance(base, str) or not base:
+                    continue
+                set_json_path = Path(base) / "_set.json"
+                set_json = load_json(set_json_path)
+                set_sources = set_json.get("sources", [])
+                if not isinstance(set_sources, list):
+                    continue
+                for src in set_sources:
+                    if isinstance(src, str) and src:
+                        sources.append(Path(src))
+    return sources
 
 
 def main(argv: list[str]) -> int:
@@ -109,6 +133,12 @@ def main(argv: list[str]) -> int:
         default=None,
         help="Pfad zur globalen Titel-Liste (Default: assets/gallery/<collection>/titles_global.txt).",
     )
+    ap.add_argument(
+        "--start",
+        type=int,
+        default=1,
+        help="Startnummer (Default: 1).",
+    )
     ap.add_argument("--dry-run", action="store_true", help="Nur anzeigen, nichts schreiben.")
     args = ap.parse_args(argv)
 
@@ -116,54 +146,42 @@ def main(argv: list[str]) -> int:
     input_path = Path(args.input) if args.input else Path("assets/gallery") / collection / "titles_global.txt"
     global_map = parse_global_titles(input_path)
 
-    original_root = Path("assets/gallery") / collection / "original"
-    title_files = sorted(original_root.rglob("_titles.txt"), key=lambda p: p.as_posix())
-    if not title_files:
-        print(f"Keine _titles.txt Dateien gefunden unter {original_root}", file=sys.stderr)
+    processed_root = Path("assets/gallery") / collection / "processed"
+    if not processed_root.is_dir():
+        print(f"Fehler: processed/ nicht gefunden: {processed_root}", file=sys.stderr)
         return 1
 
-    changed_files = 0
+    ordered_sources = iter_sources_in_display_order(processed_root)
+    if not ordered_sources:
+        print(f"Keine Bilder gefunden (index.json / _set.json) unter {processed_root}", file=sys.stderr)
+        return 1
+
+    # Build: group_dir -> list[(filename, title)] in the encountered order.
+    grouped: dict[Path, list[tuple[str, str]]] = defaultdict(list)
+    n = int(args.start)
     changed_titles = 0
+    for src in ordered_sources:
+        group_dir = src.parent
+        desired = global_map.get(n, "").strip()
+        title = desired if desired else str(n)
+        grouped[group_dir].append((src.name, title))
+        if desired:
+            changed_titles += 1
+        n += 1
 
-    for tf in title_files:
-        rows = parse_titles_file(tf)
-        updated = False
-        new_rows: list[tuple[str, str, str]] = []
-        for raw, filename, title in rows:
-            if not filename:
-                new_rows.append((raw, "", ""))
-                continue
+    changed_files = 0
+    for group_dir, entries in sorted(grouped.items(), key=lambda kv: kv[0].as_posix()):
+        tf = group_dir / "_titles.txt"
+        if not args.dry_run:
+            group_dir.mkdir(parents=True, exist_ok=True)
+            write_titles_file(tf, entries, dry_run=False)
+        changed_files += 1
 
-            # We expect current titles to be global numbers (strings).
-            try:
-                n = int(title)
-            except ValueError:
-                new_rows.append((raw, filename, title))
-                continue
-
-            new_title = global_map.get(n, "").strip()
-            if not new_title:
-                # Keep the number if empty/missing.
-                new_rows.append((raw, filename, str(n)))
-                continue
-
-            if new_title != title:
-                updated = True
-                changed_titles += 1
-            new_rows.append((raw, filename, new_title))
-
-        if updated:
-            changed_files += 1
-            write_titles_file(tf, new_rows, dry_run=bool(args.dry_run))
-        else:
-            if not args.dry_run:
-                # Still normalize (ensures file ends with newline etc.)? Not needed.
-                pass
-
+    total = n - int(args.start)
     if args.dry_run:
-        print(f"Dry-run: würde {changed_titles} Titel in {changed_files} Dateien ändern.")
+        print(f"Dry-run: würde {total} Bilder in {changed_files} Dateien schreiben (davon {changed_titles} mit Titel-Text).")
     else:
-        print(f"OK: {changed_titles} Titel geändert in {changed_files} Dateien.")
+        print(f"OK: {total} Bilder geschrieben in {changed_files} Dateien (davon {changed_titles} mit Titel-Text).")
     return 0
 
 
