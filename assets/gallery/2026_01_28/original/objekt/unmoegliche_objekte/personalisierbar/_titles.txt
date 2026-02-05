@@ -1,5 +1,5 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-181815eb-aa27-4648-a57f-75f565b31739.JPG | personalisierbar_001
-7f3a564d-e998-487c-bab7-34bd720ccce1.JPG | personalisierbar_002
-f1180213-0519-4d75-96b9-98b19b693f0b.JPG | personalisierbar_003
+7f3a564d-e998-487c-bab7-34bd720ccce1.JPG | 39
+f1180213-0519-4d75-96b9-98b19b693f0b.JPG | 40
+181815eb-aa27-4648-a57f-75f565b31739.JPG | 41

@@ -1,7 +1,7 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_1562.HEIC | alle_anlaesse_001
-IMG_1653.HEIC | alle_anlaesse_002
-IMG_2779.HEIC | alle_anlaesse_003
-IMG_2782.HEIC | alle_anlaesse_004
-IMG_3023.HEIC | alle_anlaesse_005
+IMG_2779.HEIC | 84
+IMG_1562.HEIC | 85
+IMG_3023.HEIC | 86
+IMG_2782.HEIC | 87
+IMG_1653.HEIC | 88

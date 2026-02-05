@@ -1,6 +1,6 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-27265c61-1d3f-4ff1-83ef-e43fa02dd0ec.JPG | der_konversationsstarter_zu_tisch_001
-5fbe9e6e-14e4-4ba2-af50-f911b317f8af.JPG | der_konversationsstarter_zu_tisch_002
-6f8807ba-85a2-490a-8dcd-def7806ba696.JPG | der_konversationsstarter_zu_tisch_003
-99fd2a9a-a2d5-4ce6-bf4d-2ab9796c15dc.JPG | der_konversationsstarter_zu_tisch_004
+27265c61-1d3f-4ff1-83ef-e43fa02dd0ec.JPG | 111
+6f8807ba-85a2-490a-8dcd-def7806ba696.JPG | 112
+5fbe9e6e-14e4-4ba2-af50-f911b317f8af.JPG | 113
+99fd2a9a-a2d5-4ce6-bf4d-2ab9796c15dc.JPG | 114

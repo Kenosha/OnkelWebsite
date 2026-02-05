@@ -1,4 +1,4 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_4474.HEIC | stillvoll_001
-IMG_4475.HEIC | stillvoll_002
+IMG_4474.HEIC | 124
+IMG_4475.HEIC | 125

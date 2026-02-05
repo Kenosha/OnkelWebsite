@@ -1,7 +1,7 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_0420.HEIC | warme_beleuchtung_001
-IMG_0423.HEIC | warme_beleuchtung_002
-IMG_0426.HEIC | warme_beleuchtung_003
-IMG_0646.HEIC | warme_beleuchtung_004
-IMG_0647.HEIC | warme_beleuchtung_005
+IMG_0420.HEIC | 97
+IMG_0423.HEIC | 98
+IMG_0426.HEIC | 99
+IMG_0646.HEIC | 100
+IMG_0647.HEIC | 101

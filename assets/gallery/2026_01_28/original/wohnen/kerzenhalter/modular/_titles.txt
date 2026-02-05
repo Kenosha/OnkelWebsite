@@ -1,6 +1,6 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_1195.HEIC | modular_001
-IMG_2549.HEIC | modular_002
-IMG_6070.HEIC | modular_003
-IMG_6118.HEIC | modular_004
+IMG_6118.HEIC | 63
+IMG_6070.HEIC | 64
+IMG_1195.HEIC | 65
+IMG_2549.HEIC | 66

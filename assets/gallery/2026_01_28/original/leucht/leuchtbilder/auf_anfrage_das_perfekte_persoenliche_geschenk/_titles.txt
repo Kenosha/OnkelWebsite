@@ -1,8 +1,8 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_7820.HEIC | auf_anfrage_das_perfekte_persoenliche_geschenk_001
-IMG_7859.heic | auf_anfrage_das_perfekte_persoenliche_geschenk_002
-IMG_7911.HEIC | auf_anfrage_das_perfekte_persoenliche_geschenk_003
-IMG_7935.HEIC | auf_anfrage_das_perfekte_persoenliche_geschenk_004
-IMG_8686.HEIC | auf_anfrage_das_perfekte_persoenliche_geschenk_005
-IMG_8812.heic | auf_anfrage_das_perfekte_persoenliche_geschenk_006
+IMG_8812.heic | 1
+IMG_7820.HEIC | 2
+IMG_8686.HEIC | 3
+IMG_7935.HEIC | 4
+IMG_7911.HEIC | 5
+IMG_7859.heic | 6

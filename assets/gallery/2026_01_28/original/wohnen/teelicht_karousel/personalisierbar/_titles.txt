@@ -1,7 +1,7 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_1565.HEIC | personalisierbar_001
-IMG_1597.HEIC | personalisierbar_002
-IMG_1624.HEIC | personalisierbar_003
-IMG_1639.HEIC | personalisierbar_004
-IMG_3521.HEIC | personalisierbar_005
+IMG_1565.HEIC | 89
+IMG_1597.HEIC | 90
+IMG_3521.HEIC | 91
+IMG_1639.HEIC | 92
+IMG_1624.HEIC | 93

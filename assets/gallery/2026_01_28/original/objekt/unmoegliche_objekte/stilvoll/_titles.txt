@@ -1,8 +1,8 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_2802.HEIC | stilvoll_001
-IMG_2807.HEIC | stilvoll_002
-IMG_4144.HEIC | stilvoll_003
-IMG_4155.HEIC | stilvoll_004
-IMG_4276.HEIC | stilvoll_005
-IMG_4277.HEIC | stilvoll_006
+IMG_4277.HEIC | 42
+IMG_2802.HEIC | 43
+IMG_4144.HEIC | 44
+IMG_4155.HEIC | 45
+IMG_2807.HEIC | 46
+IMG_4276.HEIC | 47

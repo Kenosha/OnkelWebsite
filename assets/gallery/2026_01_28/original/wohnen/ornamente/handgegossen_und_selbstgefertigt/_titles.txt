@@ -1,5 +1,5 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-e50630e9-81d2-4b27-90ff-ab400b3cd256.JPG | handgegossen_und_selbstgefertigt_001
-IMG_2525.HEIC | handgegossen_und_selbstgefertigt_002
-IMG_2794.HEIC | handgegossen_und_selbstgefertigt_003
+IMG_2794.HEIC | 81
+e50630e9-81d2-4b27-90ff-ab400b3cd256.JPG | 82
+IMG_2525.HEIC | 83

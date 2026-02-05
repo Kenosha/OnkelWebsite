@@ -1,11 +1,11 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_1201.HEIC | variantenreich_001
-IMG_2548.HEIC | variantenreich_002
-IMG_2551.HEIC | variantenreich_003
-IMG_2556.HEIC | variantenreich_004
-IMG_2560.HEIC | variantenreich_005
-IMG_2570.HEIC | variantenreich_006
-IMG_2836.HEIC | variantenreich_007
-IMG_6005.HEIC | variantenreich_008
-IMG_7596.HEIC | variantenreich_009
+IMG_2556.HEIC | 72
+IMG_6005.HEIC | 73
+IMG_2548.HEIC | 74
+IMG_2560.HEIC | 75
+IMG_2836.HEIC | 76
+IMG_7596.HEIC | 77
+IMG_2570.HEIC | 78
+IMG_2551.HEIC | 79
+IMG_1201.HEIC | 80

@@ -1,9 +1,9 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
-IMG_3255.HEIC | geschenk_oder_visitenkarte_001
-IMG_3256.HEIC | geschenk_oder_visitenkarte_002
-IMG_3314.HEIC | geschenk_oder_visitenkarte_003
-IMG_3316.HEIC | geschenk_oder_visitenkarte_004
-IMG_3835.heic | geschenk_oder_visitenkarte_005
-IMG_9235.HEIC | geschenk_oder_visitenkarte_006
-IMG_9238.HEIC | geschenk_oder_visitenkarte_007
+IMG_3316.HEIC | 18
+IMG_3256.HEIC | 19
+IMG_3835.heic | 20
+IMG_3314.HEIC | 21
+IMG_9235.HEIC | 22
+IMG_3255.HEIC | 23
+IMG_9238.HEIC | 24
