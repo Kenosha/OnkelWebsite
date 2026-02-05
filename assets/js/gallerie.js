@@ -16,6 +16,36 @@ window.__onkelGalleryLoaded = true;
 let cachedActiveCollection = null;
 let lightboxState = null;
 
+function singularizeClassTitle(classId, pluralTitle) {
+  const id = String(classId || "").trim();
+  const title = String(pluralTitle || "").trim();
+
+  const overrides = {
+    leuchtbilder: "Leuchtbild",
+    leuchtuhren: "Leuchtuhr",
+    ketten: "Kettenskulptur",
+    unmoegliche_objekte: "Paradoxes Gebilde",
+    blumenvasen: "Blumenvase",
+    kerzenhalter: "Kerzenhalter",
+    ornamente: "Ornament",
+    teelicht_karousel: "Teelicht-Karousell",
+    windlichter: "Windlicht",
+    flaschenhalter: "Flaschenhalter",
+    gabeln: "Serviettenhalter",
+    korken: "Korken",
+    anhaenger: "Anhänger",
+    spieluhren: "Spieluhr",
+    verpackung: "Verpackung",
+  };
+  if (overrides[id]) return overrides[id];
+
+  // Fallback: simple heuristic (best effort).
+  if (title.endsWith("en") && title.length > 3) return title.slice(0, -2);
+  if (title.endsWith("e") && title.length > 3) return title.slice(0, -1);
+  if (title.endsWith("s") && title.length > 3) return title.slice(0, -1);
+  return title;
+}
+
 function getQueryParam(name) {
   try {
     return new URLSearchParams(window.location.search).get(name) || "";
@@ -43,35 +73,37 @@ function ensureLightbox() {
   overlay.setAttribute("aria-modal", "true");
   overlay.setAttribute("aria-label", "Bildvorschau");
   overlay.innerHTML = `
-    <div class="lightbox-inner" role="document">
-      <header class="lightbox-head">
-        <p class="lightbox-title" data-lightbox-title></p>
-        <button type="button" class="lightbox-close" aria-label="Schließen" data-lightbox-close>
-          <span aria-hidden="true">×</span>
-        </button>
-      </header>
-      <div class="lightbox-viewport" data-lightbox-viewport>
-        <img class="lightbox-img" data-lightbox-img alt="" />
-        <button type="button" class="slider-nav prev" aria-label="Vorheriges Bild" data-lightbox-prev>
-          <span aria-hidden="true">‹</span>
-        </button>
-        <button type="button" class="slider-nav next" aria-label="Nächstes Bild" data-lightbox-next>
-          <span aria-hidden="true">›</span>
-        </button>
-      </div>
-      <p class="lightbox-caption small">
-        <span class="lightbox-name" data-lightbox-name></span><br />
-        <span class="muted" data-lightbox-caption></span>
-      </p>
-    </div>
-  `;
+	    <div class="lightbox-inner" role="document">
+	      <header class="lightbox-head">
+	        <p class="lightbox-title">
+	          <span data-lightbox-kind></span>
+	          <span class="lightbox-name" data-lightbox-name></span>
+	        </p>
+	        <button type="button" class="lightbox-close" aria-label="Schließen" data-lightbox-close>
+	          <span aria-hidden="true">×</span>
+	        </button>
+	      </header>
+	      <div class="lightbox-viewport" data-lightbox-viewport>
+	        <img class="lightbox-img" data-lightbox-img alt="" />
+	        <button type="button" class="slider-nav prev" aria-label="Vorheriges Bild" data-lightbox-prev>
+	          <span aria-hidden="true">‹</span>
+	        </button>
+	        <button type="button" class="slider-nav next" aria-label="Nächstes Bild" data-lightbox-next>
+	          <span aria-hidden="true">›</span>
+	        </button>
+	      </div>
+	      <p class="lightbox-caption small">
+	        <span class="muted" data-lightbox-caption></span>
+	      </p>
+	    </div>
+	  `;
 
   document.body.appendChild(overlay);
 
   const img = overlay.querySelector("[data-lightbox-img]");
   const caption = overlay.querySelector("[data-lightbox-caption]");
   const nameEl = overlay.querySelector("[data-lightbox-name]");
-  const title = overlay.querySelector("[data-lightbox-title]");
+  const kindEl = overlay.querySelector("[data-lightbox-kind]");
   const closeBtn = overlay.querySelector("[data-lightbox-close]");
   const prevBtn = overlay.querySelector("[data-lightbox-prev]");
   const nextBtn = overlay.querySelector("[data-lightbox-next]");
@@ -104,8 +136,11 @@ function ensureLightbox() {
     if (!current) return;
     img.src = current.url || "";
     img.alt = current.alt || "";
-    if (title) title.textContent = current.title || "";
-    if (nameEl) nameEl.textContent = current.imageTitle || "";
+    if (kindEl) kindEl.textContent = current.kind || current.title || "";
+    if (nameEl) {
+      const t = String(current.imageTitle || "").trim();
+      nameEl.textContent = t ? ` "${t}"` : "";
+    }
     if (caption) caption.textContent = current.caption || "";
   }
 
@@ -269,6 +304,8 @@ function setupGroupedSliderWithResolvedSets(sliderRoot, sets) {
   if (!img) return;
 
   const title = sliderRoot.querySelector("h3")?.textContent?.trim() || "Platzhalter";
+  const classId = sliderRoot.getAttribute("data-gallery-class") || "";
+  const kind = singularizeClassTitle(classId, title);
   const fallback = createFallbackSvgDataUrl(title);
 
   const normalizedSets = (sets || [])
@@ -462,6 +499,7 @@ function setupGroupedSliderWithResolvedSets(sliderRoot, sets) {
         url: currentUrl(),
         caption: set?.caption || "",
         imageTitle: (set?.titles || [])[currentImageIndex] || "",
+        kind,
         title,
         alt: `${title} – Bildvorschau`,
       };
