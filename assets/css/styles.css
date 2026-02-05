@@ -368,6 +368,58 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.home-preview {
+  margin-top: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.home-preview-viewport {
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.home-preview-track {
+  display: flex;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.home-preview-item {
+  flex: 0 0 calc(100% / 3);
+  padding: 10px 12px;
+  display: grid;
+  place-items: center;
+  --focus: 0;
+}
+
+.home-preview-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  background: #000;
+  object-fit: contain;
+  object-position: center;
+  opacity: calc(0.45 + (var(--focus) * 0.55));
+  transform: scale(calc(0.9 + (var(--focus) * 0.1)));
+  filter: saturate(calc(0.9 + (var(--focus) * 0.25)))
+    contrast(calc(0.92 + (var(--focus) * 0.12)));
+  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.55);
+}
+
+@media (max-width: 720px) {
+  .home-preview-item img {
+    aspect-ratio: 1 / 1;
+  }
+}
+
 .card {
   border-radius: var(--radius);
   border: 1px solid var(--line);
