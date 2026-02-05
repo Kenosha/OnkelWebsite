@@ -32,32 +32,32 @@
 32 kettenlicht I
 33 Ohne Titel I
 34 Kettenherz
-35 Kettenlich II
+35 Kettenlicht II
 36 kettenuhr
 37 leonardo
 38 leonardo II
-39 golf, durchstossen
+39 golf, durchstoßen
 40 golf i
 41 gold ii
 42 In holz
 43 denker und ball
 44 denker und pfeil
-45 herz, durchstossen
+45 herz, durchstoßen
 46 denker und pfeil II
 47 in holz
 48 uhr, herz, pfeil
-49 golf, durchstossen II
+49 golf, durchstoßen II
 50 golf iii
 51 uhr, herz, pfeil
 52 uhr, herz, pfeil
-53 glas, durchstossen
-54 gold, durchstossen III
-55 flasche, durchstossen
+53 glas, durchstoßen
+54 gold, durchstoßen III
+55 flasche, durchstoßen
 56 denker und ball
-57 flaschengeruest
+57 flaschengerüst
 58 tee-time
 59 ohne frosch
-60 flaschengeruest
+60 flaschengerüst
 61 vase i
 62 vase ii
 63 perlmutt
@@ -82,14 +82,14 @@
 82 drei affen
 83 denker
 84 liebe
-85 glueckwunsch
+85 Glückwunsch
 86 weihnachten
 87 liebe
-88 glueckwunsch ii
-89 glueckwunsch
+88 Glückwunsch II
+89 Glückwunsch
 90 inschallah
 91 sicilia
-92 glueckwunsch iii
+92 Glückwunsch III
 93 pride
 94 cognac
 95 mescal
@@ -97,9 +97,9 @@
 97 cognac
 98 mescal
 99 bourbon
-100 creme brule
-101 creme brule
-102 horoskok
+100 Crème brûlée
+101 Crème brûlée
+102 Horoskop
 103 wine time
 104 wine time
 105 schwebe-rebe
@@ -118,4 +118,3 @@
 122 hochzeit
 123 geburtstag ii
 124-125 schwarz und creme
-

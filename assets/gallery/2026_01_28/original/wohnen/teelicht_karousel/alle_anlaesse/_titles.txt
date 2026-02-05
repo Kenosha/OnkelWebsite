@@ -1,7 +1,7 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
 IMG_2779.HEIC | liebe
-IMG_1562.HEIC | glueckwunsch
+IMG_1562.HEIC | Glückwunsch
 IMG_3023.HEIC | weihnachten
 IMG_2782.HEIC | liebe
-IMG_1653.HEIC | glueckwunsch ii
+IMG_1653.HEIC | Glückwunsch II

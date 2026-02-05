@@ -1,7 +1,7 @@
 # Format: <Dateiname> | <Bildname>
 # Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
 IMG_4138.HEIC | uhr, herz, pfeil
-IMG_6466.HEIC | golf, durchstossen II
+IMG_6466.HEIC | golf, durchstoßen II
 IMG_0427.HEIC | golf iii
 IMG_3018.HEIC | uhr, herz, pfeil
 IMG_3022.HEIC | uhr, herz, pfeil
