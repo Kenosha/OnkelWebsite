@@ -1,0 +1,9 @@
+# Format: <Dateiname> | <Bildname>
+# Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
+IMG_0442.HEIC | leuchtet_im_dunkeln_001
+IMG_0457.HEIC | leuchtet_im_dunkeln_002
+IMG_3376.heic | leuchtet_im_dunkeln_003
+IMG_3379.HEIC | leuchtet_im_dunkeln_004
+IMG_3381.HEIC | leuchtet_im_dunkeln_005
+IMG_3444.heic | leuchtet_im_dunkeln_006
+IMG_3445.heic | leuchtet_im_dunkeln_007

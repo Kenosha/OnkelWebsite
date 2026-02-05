@@ -7,5 +7,11 @@
     "assets/gallery/2026_01_28/original/objekt/ketten/einzigartig/IMG_3940.JPG",
     "assets/gallery/2026_01_28/original/objekt/ketten/einzigartig/IMG_4143.JPG"
   ],
-  "base": "assets/gallery/2026_01_28/processed/objekt/ketten/set-01"
+  "base": "assets/gallery/2026_01_28/processed/objekt/ketten/set-01",
+  "titles": [
+    "einzigartig_003",
+    "einzigartig_004",
+    "einzigartig_001",
+    "einzigartig_002"
+  ]
 }

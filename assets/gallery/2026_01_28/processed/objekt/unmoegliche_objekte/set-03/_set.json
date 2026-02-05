@@ -8,5 +8,12 @@
     "assets/gallery/2026_01_28/original/objekt/unmoegliche_objekte/vielseitig_einsetzbar/IMG_3018.HEIC",
     "assets/gallery/2026_01_28/original/objekt/unmoegliche_objekte/vielseitig_einsetzbar/IMG_3022.HEIC"
   ],
-  "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-03"
+  "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-03",
+  "titles": [
+    "vielseitig_einsetzbar_004",
+    "vielseitig_einsetzbar_005",
+    "vielseitig_einsetzbar_001",
+    "vielseitig_einsetzbar_002",
+    "vielseitig_einsetzbar_003"
+  ]
 }

@@ -11,5 +11,15 @@
     "assets/gallery/2026_01_28/original/objekt/unmoegliche_objekte/wirft_fragen_auf/IMG_4294.HEIC",
     "assets/gallery/2026_01_28/original/objekt/unmoegliche_objekte/wirft_fragen_auf/IMG_6442.heic"
   ],
-  "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04"
+  "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-04",
+  "titles": [
+    "wirft_fragen_auf_002",
+    "wirft_fragen_auf_001",
+    "wirft_fragen_auf_003",
+    "wirft_fragen_auf_004",
+    "wirft_fragen_auf_007",
+    "wirft_fragen_auf_005",
+    "wirft_fragen_auf_006",
+    "wirft_fragen_auf_008"
+  ]
 }

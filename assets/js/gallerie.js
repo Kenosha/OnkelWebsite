@@ -16,6 +16,24 @@ window.__onkelGalleryLoaded = true;
 let cachedActiveCollection = null;
 let lightboxState = null;
 
+function getQueryParam(name) {
+  try {
+    return new URLSearchParams(window.location.search).get(name) || "";
+  } catch {
+    return "";
+  }
+}
+
+function normalizeUrlForMatch(url) {
+  const s = String(url || "").trim();
+  if (!s) return "";
+  return s
+    .replace(/^https?:\/\/[^/]+\//i, "")
+    .replace(/^\//, "")
+    .replace(/#.*$/, "")
+    .replace(/\?.*$/, "");
+}
+
 function ensureLightbox() {
   if (lightboxState) return lightboxState;
 
@@ -41,7 +59,10 @@ function ensureLightbox() {
           <span aria-hidden="true">›</span>
         </button>
       </div>
-      <p class="lightbox-caption muted small" data-lightbox-caption></p>
+      <p class="lightbox-caption small">
+        <span class="lightbox-name" data-lightbox-name></span><br />
+        <span class="muted" data-lightbox-caption></span>
+      </p>
     </div>
   `;
 
@@ -49,6 +70,7 @@ function ensureLightbox() {
 
   const img = overlay.querySelector("[data-lightbox-img]");
   const caption = overlay.querySelector("[data-lightbox-caption]");
+  const nameEl = overlay.querySelector("[data-lightbox-name]");
   const title = overlay.querySelector("[data-lightbox-title]");
   const closeBtn = overlay.querySelector("[data-lightbox-close]");
   const prevBtn = overlay.querySelector("[data-lightbox-prev]");
@@ -83,6 +105,7 @@ function ensureLightbox() {
     img.src = current.url || "";
     img.alt = current.alt || "";
     if (title) title.textContent = current.title || "";
+    if (nameEl) nameEl.textContent = current.imageTitle || "";
     if (caption) caption.textContent = current.caption || "";
   }
 
@@ -150,6 +173,11 @@ function ensureLightbox() {
 
 async function getActiveCollection() {
   if (cachedActiveCollection !== null) return cachedActiveCollection;
+  const override = getQueryParam("collection").trim();
+  if (override) {
+    cachedActiveCollection = override;
+    return cachedActiveCollection;
+  }
   try {
     const res = await fetch(ACTIVE_COLLECTION_PATH, { cache: "no-cache" });
     if (!res.ok) throw new Error("not ok");
@@ -248,8 +276,14 @@ function setupGroupedSliderWithResolvedSets(sliderRoot, sets) {
       caption: String(s?.caption || ""),
       hold: Number.isFinite(Number(s?.hold)) ? Number(s.hold) : DEFAULT_HOLD,
       images: Array.isArray(s?.images) ? s.images.map(String).filter(Boolean) : [],
+      titles: Array.isArray(s?.titles) ? s.titles.map((t) => String(t ?? "")) : [],
     }))
     .filter((s) => s.images.length > 0);
+
+  for (const s of normalizedSets) {
+    s.titles = (s.titles || []).slice(0, s.images.length);
+    while (s.titles.length < s.images.length) s.titles.push("");
+  }
 
   if (normalizedSets.length === 0) {
     img.src = fallback;
@@ -395,17 +429,39 @@ function setupGroupedSliderWithResolvedSets(sliderRoot, sets) {
     timer = null;
   }
 
+  function setCurrentByUrl(url) {
+    const target = normalizeUrlForMatch(url);
+    if (!target) return false;
+    for (let si = 0; si < normalizedSets.length; si++) {
+      const s = normalizedSets[si];
+      for (let ii = 0; ii < s.images.length; ii++) {
+        const candidate = normalizeUrlForMatch(s.images[ii]);
+        if (candidate && candidate === target) {
+          currentSetIndex = si;
+          currentImageIndex = ii;
+          holdCounter = 0;
+          setImage(false);
+          updateControlsEnabled();
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   const controller = {
     next: nextManual,
     prev: prevManual,
     stopAuto: stop,
     startAuto: start,
     pause: pauseAutoFor,
+    setCurrentByUrl,
     getCurrent() {
       const set = normalizedSets[currentSetIndex];
       return {
         url: currentUrl(),
         caption: set?.caption || "",
+        imageTitle: (set?.titles || [])[currentImageIndex] || "",
         title,
         alt: `${title} – Bildvorschau`,
       };
@@ -460,15 +516,22 @@ async function setupGroupedSlider(sliderRoot, sets) {
     const caption = String(s?.caption || "");
     const hold = Number.isFinite(Number(s?.hold)) ? Number(s.hold) : DEFAULT_HOLD;
     const explicitImages = Array.isArray(s?.images) ? s.images.map(String).filter(Boolean) : [];
+    const explicitTitles = Array.isArray(s?.titles) ? s.titles.map((t) => String(t ?? "")) : [];
     const base = String(s?.base || deriveBaseFromImages(explicitImages) || "");
 
     let images = explicitImages;
-    if (base) {
+    let titles = explicitTitles;
+    if (base && images.length === 0) {
       const probed = await collectNumberedJpgs(base);
       if (probed.length > 0) images = probed;
+      titles = [];
     }
 
-    if (images.length > 0) resolved.push({ caption, hold, images });
+    if (images.length > 0) {
+      titles = titles.slice(0, images.length);
+      while (titles.length < images.length) titles.push("");
+      resolved.push({ caption, hold, images, titles });
+    }
   }
 
   setupGroupedSliderWithResolvedSets(sliderRoot, resolved);
@@ -522,6 +585,7 @@ function renderGallery(root, manifest) {
       const article = document.createElement("article");
       article.className = "gallery-view";
       article.setAttribute("data-slider", "");
+      if (cls?.id) article.setAttribute("data-gallery-class", String(cls.id));
 
       const viewTop = document.createElement("div");
       viewTop.className = "view-top";
@@ -585,6 +649,56 @@ function renderGallery(root, manifest) {
   }
 }
 
+function findGalleryArticle(root, classId) {
+  if (!root || !classId) return null;
+  const wanted = String(classId);
+  const articles = root.querySelectorAll("[data-gallery-class]");
+  for (const el of articles) {
+    if (String(el.getAttribute("data-gallery-class") || "") === wanted) return el;
+  }
+  return null;
+}
+
+function waitForSliderController(sliderRoot, timeoutMs = 6000) {
+  return new Promise((resolve) => {
+    const start = Date.now();
+    const tick = () => {
+      const c = sliderRoot?.[SLIDER_CONTROLLER_KEY] || null;
+      if (c) return resolve(c);
+      if (Date.now() - start >= timeoutMs) return resolve(null);
+      window.requestAnimationFrame(tick);
+    };
+    tick();
+  });
+}
+
+async function applyDeepLink(root) {
+  const cls = getQueryParam("cls").trim();
+  const img = getQueryParam("img").trim();
+  if (!cls) return;
+
+  const article = findGalleryArticle(root, cls);
+  if (!article) return;
+
+  article.scrollIntoView({ behavior: "smooth", block: "center" });
+  const controller = await waitForSliderController(article);
+  if (!controller) return;
+
+  if (img && controller.setCurrentByUrl) controller.setCurrentByUrl(img);
+  ensureLightbox().open(controller);
+
+  // Avoid re-opening on refresh/back.
+  try {
+    const u = new URL(window.location.href);
+    u.searchParams.delete("cat");
+    u.searchParams.delete("cls");
+    u.searchParams.delete("img");
+    window.history.replaceState({}, "", u.toString());
+  } catch {
+    // ignore
+  }
+}
+
 async function initGallery() {
   const root = document.querySelector("[data-gallery-root]");
   if (!root) return;
@@ -629,6 +743,7 @@ async function initGallery() {
 
     const manifest = await fetchJson(indexPath);
     renderGallery(root, manifest);
+    void applyDeepLink(root);
   } catch (err) {
     const msg = String(err?.message || err || "Unbekannter Fehler");
     root.innerHTML = `

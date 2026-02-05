@@ -12,5 +12,16 @@
     "assets/gallery/2026_01_28/original/wohnen/kerzenhalter/variantenreich/IMG_2551.HEIC",
     "assets/gallery/2026_01_28/original/wohnen/kerzenhalter/variantenreich/IMG_1201.HEIC"
   ],
-  "base": "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03"
+  "base": "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-03",
+  "titles": [
+    "variantenreich_004",
+    "variantenreich_008",
+    "variantenreich_002",
+    "variantenreich_005",
+    "variantenreich_007",
+    "variantenreich_009",
+    "variantenreich_006",
+    "variantenreich_003",
+    "variantenreich_001"
+  ]
 }

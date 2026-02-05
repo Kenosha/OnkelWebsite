@@ -7,5 +7,11 @@
     "assets/gallery/2026_01_28/original/wohnen/kerzenhalter/modular/IMG_1195.HEIC",
     "assets/gallery/2026_01_28/original/wohnen/kerzenhalter/modular/IMG_2549.HEIC"
   ],
-  "base": "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-01"
+  "base": "assets/gallery/2026_01_28/processed/wohnen/kerzenhalter/set-01",
+  "titles": [
+    "modular_004",
+    "modular_003",
+    "modular_001",
+    "modular_002"
+  ]
 }

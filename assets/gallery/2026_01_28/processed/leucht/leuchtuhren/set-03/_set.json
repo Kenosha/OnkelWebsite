@@ -10,5 +10,14 @@
     "assets/gallery/2026_01_28/original/leucht/leuchtuhren/leuchtet_im_dunkeln/IMG_3444.heic",
     "assets/gallery/2026_01_28/original/leucht/leuchtuhren/leuchtet_im_dunkeln/IMG_3379.HEIC"
   ],
-  "base": "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03"
+  "base": "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-03",
+  "titles": [
+    "leuchtet_im_dunkeln_005",
+    "leuchtet_im_dunkeln_003",
+    "leuchtet_im_dunkeln_007",
+    "leuchtet_im_dunkeln_002",
+    "leuchtet_im_dunkeln_001",
+    "leuchtet_im_dunkeln_006",
+    "leuchtet_im_dunkeln_004"
+  ]
 }

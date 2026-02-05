@@ -41,40 +41,45 @@ function createFallbackSvgDataUrl() {
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7c5cff" stop-opacity="0.35"/>
-      <stop offset="0.55" stop-color="#2de2e6" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#ff4ecd" stop-opacity="0.22"/>
+      <stop offset="0" stop-color="#c9973a" stop-opacity="0.25"/>
+      <stop offset="0.55" stop-color="#3d9aa3" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#b15a7f" stop-opacity="0.18"/>
     </linearGradient>
   </defs>
-  <rect width="900" height="600" fill="#0b0f17"/>
-  <rect x="36" y="36" width="828" height="528" rx="24" fill="url(#g)" opacity="0.35"/>
-  <rect x="70" y="70" width="760" height="460" rx="18" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)"/>
-  <text x="450" y="318" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="30" fill="rgba(255,255,255,0.9)">Galerie-Vorschau</text>
+  <rect width="900" height="600" fill="#0f0d0a"/>
+  <rect x="36" y="36" width="828" height="528" rx="24" fill="url(#g)" opacity="0.55"/>
+  <rect x="70" y="70" width="760" height="460" rx="18" fill="rgba(255,246,220,0.05)" stroke="rgba(255,230,160,0.18)"/>
+  <text x="450" y="318" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="rgba(255,250,242,0.9)">Galerie-Vorschau</text>
 </svg>`;
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
-function collectImagePool(manifest) {
-  const pool = [];
+function collectImageEntries(manifest) {
+  const out = [];
   const categories = Array.isArray(manifest?.categories) ? manifest.categories : [];
   for (const cat of categories) {
+    const catId = String(cat?.id || "");
     const classes = Array.isArray(cat?.classes) ? cat.classes : [];
     for (const cls of classes) {
+      const clsId = String(cls?.id || "");
       const sets = Array.isArray(cls?.sets) ? cls.sets : [];
       for (const s of sets) {
         const images = Array.isArray(s?.images) ? s.images : [];
         for (const url of images) {
           const u = String(url || "").trim();
           if (!u) continue;
-          pool.push(u);
+          out.push({ url: u, catId, clsId });
         }
       }
     }
   }
-  return pool;
+  // de-dupe by url (first occurrence wins)
+  const byUrl = new Map();
+  for (const e of out) if (e?.url && !byUrl.has(e.url)) byUrl.set(e.url, e);
+  return Array.from(byUrl.values());
 }
 
-function setupHomePreview(root, pool) {
+function setupHomePreview(root, entries, { collection }) {
   const viewport = root.querySelector(".home-preview-viewport");
   const track = root.querySelector("[data-home-preview-track]");
   if (!viewport || !track) return;
@@ -86,30 +91,38 @@ function setupHomePreview(root, pool) {
   const imgs = items.map((el) => el.querySelector("img"));
   if (items.length !== 5 || imgs.some((i) => !i)) return;
 
-  const uniquePool = Array.from(new Set(pool));
-  if (uniquePool.length === 0) {
+  const list = Array.isArray(entries) ? entries.filter((e) => e?.url) : [];
+  if (list.length === 0) {
     for (const img of imgs) img.src = fallback;
     return;
   }
 
-  const queue = shuffleInPlace(uniquePool.slice());
+  const queue = shuffleInPlace(list.slice());
 
-  function nextUrl(avoid) {
-    if (queue.length === 0) queue.push(...shuffleInPlace(uniquePool.slice()));
-    let u = queue.pop() || fallback;
-    if (avoid && u === avoid) {
-      if (queue.length === 0) queue.push(...shuffleInPlace(uniquePool.slice()));
-      u = queue.pop() || u;
+  function nextEntry(avoidUrl) {
+    if (queue.length === 0) queue.push(...shuffleInPlace(list.slice()));
+    let e = queue.pop() || null;
+    if (avoidUrl && e?.url === avoidUrl) {
+      if (queue.length === 0) queue.push(...shuffleInPlace(list.slice()));
+      e = queue.pop() || e;
     }
-    return u;
+    return e;
   }
 
-  function setItemImage(index, url) {
-    const img = imgs[index];
+  function setImgEntry(img, entry) {
+    const url = String(entry?.url || "");
     img.src = url || fallback;
+    img.dataset.galleryCollection = String(collection || "");
+    img.dataset.galleryCat = String(entry?.catId || "");
+    img.dataset.galleryClass = String(entry?.clsId || "");
+    img.dataset.galleryImg = url;
   }
 
-  for (let i = 0; i < imgs.length; i++) setItemImage(i, nextUrl());
+  // Initial: 5 distinct-ish entries
+  for (let i = 0; i < imgs.length; i++) {
+    const e = nextEntry();
+    setImgEntry(imgs[i], e);
+  }
 
   function preload(url) {
     if (!url) return;
@@ -127,7 +140,7 @@ function setupHomePreview(root, pool) {
     const first = items[0];
     if (!first) return;
     itemWidthPx = first.getBoundingClientRect().width;
-    // 1 Item pro ~7 Sekunden (entspannt, konstant)
+    // 1 tile per ~7 seconds (slow/steady)
     speedPxPerMs = itemWidthPx / 7000;
   }
 
@@ -144,15 +157,15 @@ function setupHomePreview(root, pool) {
     }
   }
 
-  function pickNextUrl() {
-    const used = new Set(imgs.map((i) => i.getAttribute("src") || ""));
-    let u = nextUrl();
+  function pickNextEntry() {
+    const used = new Set(imgs.map((i) => i.dataset.galleryImg || i.getAttribute("src") || ""));
+    let e = nextEntry();
     let attempts = 0;
-    while (used.has(u) && attempts < 8) {
-      u = nextUrl(u);
+    while (used.has(e?.url || "") && attempts < 10) {
+      e = nextEntry(e?.url || "");
       attempts++;
     }
-    return u;
+    return e;
   }
 
   function recycleOne() {
@@ -160,13 +173,13 @@ function setupHomePreview(root, pool) {
     const firstImg = imgs.shift();
     if (!first || !firstImg) return;
 
-    const u = pickNextUrl();
-    firstImg.src = u || fallback;
+    const e = pickNextEntry();
+    setImgEntry(firstImg, e);
 
     items.push(first);
     imgs.push(firstImg);
     track.appendChild(first);
-    preload(queue[queue.length - 1] || null);
+    preload(queue[queue.length - 1]?.url || null);
   }
 
   function frame(t) {
@@ -205,8 +218,22 @@ function setupHomePreview(root, pool) {
     );
   }
 
-  root.addEventListener("click", () => {
-    // Kleine Interaktion: Klick springt zur Galerie.
+  root.addEventListener("click", (e) => {
+    const img = e.target?.closest?.("img");
+    if (img && root.contains(img)) {
+      const imgUrl = String(img.dataset.galleryImg || "");
+      const cat = String(img.dataset.galleryCat || "");
+      const cls = String(img.dataset.galleryClass || "");
+      const coll = String(img.dataset.galleryCollection || "");
+      const params = new URLSearchParams();
+      if (coll) params.set("collection", coll);
+      if (cat) params.set("cat", cat);
+      if (cls) params.set("cls", cls);
+      if (imgUrl) params.set("img", imgUrl);
+      const qs = params.toString();
+      window.location.href = qs ? `gallerie.html?${qs}` : "gallerie.html";
+      return;
+    }
     window.location.href = "gallerie.html";
   });
 }
@@ -218,8 +245,8 @@ async function initHomePreview() {
   try {
     const collection = await getActiveCollection();
     const manifest = await fetchJson(PROCESSED_INDEX_PATH(collection));
-    const pool = collectImagePool(manifest);
-    setupHomePreview(root, pool);
+    const entries = collectImageEntries(manifest);
+    setupHomePreview(root, entries, { collection });
   } catch {
     // Falls lokal ohne Server oder ohne Galerie-Index: wir lassen die Platzhalter stehen.
   }
@@ -230,3 +257,4 @@ if (document.readyState === "loading") {
 } else {
   initHomePreview();
 }
+

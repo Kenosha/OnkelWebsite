@@ -1,0 +1,11 @@
+# Format: <Dateiname> | <Bildname>
+# Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
+IMG_9336.HEIC | bunt_001
+IMG_9337.HEIC | bunt_002
+IMG_9468.HEIC | bunt_003
+IMG_9574.HEIC | bunt_004
+IMG_9579.HEIC | bunt_005
+IMG_9586.HEIC | bunt_006
+IMG_9591.HEIC | bunt_007
+IMG_9594.HEIC | bunt_008
+IMG_9656.HEIC | bunt_009

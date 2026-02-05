@@ -8,5 +8,12 @@
     "assets/gallery/2026_01_28/original/wohnen/teelicht_karousel/alle_anlaesse/IMG_2782.HEIC",
     "assets/gallery/2026_01_28/original/wohnen/teelicht_karousel/alle_anlaesse/IMG_1653.HEIC"
   ],
-  "base": "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-01"
+  "base": "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-01",
+  "titles": [
+    "alle_anlaesse_003",
+    "alle_anlaesse_001",
+    "alle_anlaesse_005",
+    "alle_anlaesse_004",
+    "alle_anlaesse_002"
+  ]
 }

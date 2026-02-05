@@ -1,16 +1,18 @@
 :root {
-  --bg: #0b0f17;
-  --panel: rgba(255, 255, 255, 0.06);
-  --panel-2: rgba(255, 255, 255, 0.09);
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.68);
-  --line: rgba(255, 255, 255, 0.12);
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
-  --radius: 18px;
-  --radius-sm: 12px;
-  --brand-a: #7c5cff;
-  --brand-b: #2de2e6;
-  --brand-c: #ff4ecd;
+  --bg: #0f0d0a;
+  --panel: rgba(255, 246, 220, 0.05);
+  --panel-2: rgba(255, 246, 220, 0.08);
+  --text: rgba(255, 250, 242, 0.92);
+  --muted: rgba(255, 250, 242, 0.68);
+  --line: rgba(255, 230, 160, 0.14);
+  --shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --brand-a: #c9973a; /* warm gold */
+  --brand-b: #3d9aa3; /* dusty teal */
+  --brand-c: #b15a7f; /* faded rose */
+  --chrome: rgba(15, 13, 10, 0.92);
+  --heading-font: Georgia, "Times New Roman", Times, serif;
   --max: 1100px;
 }
 
@@ -28,12 +30,20 @@ body {
 body {
   margin: 0;
   color: var(--text);
-  background: radial-gradient(1200px 800px at 12% -10%, rgba(124, 92, 255, 0.35), transparent 55%),
-    radial-gradient(900px 700px at 90% 10%, rgba(45, 226, 230, 0.22), transparent 60%),
-    radial-gradient(900px 700px at 60% 120%, rgba(255, 78, 205, 0.16), transparent 60%),
+  background:
+    radial-gradient(1000px 720px at 14% 6%, rgba(61, 154, 163, 0.12), transparent 58%),
+    radial-gradient(1000px 720px at 86% 0%, rgba(177, 90, 127, 0.1), transparent 60%),
+    linear-gradient(180deg, rgba(201, 151, 58, 0.08), transparent 48%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.018),
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
     var(--bg);
-  font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-    "Apple Color Emoji", "Segoe UI Emoji";
+  font: 16px/1.6 "Trebuchet MS", Verdana, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 a {
@@ -56,8 +66,9 @@ img {
   top: 0;
   z-index: 20;
   border-bottom: 1px solid var(--line);
-  background: rgba(11, 15, 23, 0.65);
-  backdrop-filter: blur(10px);
+  background:
+    linear-gradient(180deg, rgba(255, 246, 220, 0.04), transparent 40%),
+    var(--chrome);
 }
 
 .header-inner {
@@ -79,9 +90,13 @@ img {
 .brand-mark {
   width: 14px;
   height: 14px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--brand-a), var(--brand-b), var(--brand-c));
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), transparent 55%),
+    linear-gradient(135deg, var(--brand-a), var(--brand-b));
+  box-shadow:
+    0 0 0 2px rgba(255, 246, 220, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .nav {
@@ -108,8 +123,8 @@ img {
 
 .nav-link[aria-current="page"] {
   color: var(--text);
-  border-color: rgba(124, 92, 255, 0.55);
-  background: rgba(124, 92, 255, 0.12);
+  border-color: rgba(201, 151, 58, 0.45);
+  background: rgba(201, 151, 58, 0.12);
 }
 
 .hero {
@@ -137,6 +152,20 @@ h1 {
   font-size: clamp(32px, 5vw, 50px);
   line-height: 1.08;
   margin: 0 0 12px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading-font);
+  letter-spacing: 0.2px;
+}
+
+/* Explicitly enforce serif headings across dynamic pages (Gallery headings are injected via JS). */
+.page-head h1,
+.section-head h2,
+.view-top h3 {
+  font-family: var(--heading-font);
 }
 
 h2 {
@@ -170,29 +199,30 @@ h3 {
   align-items: center;
   justify-content: center;
   padding: 10px 14px;
-  border-radius: 999px;
+  border-radius: 12px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--panel);
   color: var(--text);
   font-weight: 600;
   cursor: pointer;
-  transition: transform 120ms ease, background 140ms ease, border-color 140ms ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: background 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--panel-2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .btn.primary {
-  border-color: rgba(45, 226, 230, 0.45);
-  background: linear-gradient(135deg, rgba(124, 92, 255, 0.25), rgba(45, 226, 230, 0.18));
+  border-color: rgba(201, 151, 58, 0.55);
+  background: linear-gradient(180deg, rgba(201, 151, 58, 0.22), rgba(201, 151, 58, 0.1));
 }
 
 .hero-card {
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  background: linear-gradient(135deg, rgba(255, 246, 220, 0.06), rgba(255, 246, 220, 0.03));
   box-shadow: var(--shadow);
   overflow: hidden;
   position: relative;
@@ -203,8 +233,8 @@ h3 {
   content: "";
   position: absolute;
   inset: -2px;
-  background: radial-gradient(300px 200px at 30% 20%, rgba(124, 92, 255, 0.26), transparent 60%),
-    radial-gradient(240px 220px at 80% 70%, rgba(255, 78, 205, 0.18), transparent 62%);
+  background: radial-gradient(340px 240px at 30% 20%, rgba(61, 154, 163, 0.18), transparent 62%),
+    radial-gradient(260px 240px at 80% 70%, rgba(177, 90, 127, 0.14), transparent 64%);
   pointer-events: none;
 }
 
@@ -228,17 +258,17 @@ h3 {
 }
 
 .section.section-solid {
-  background: rgba(11, 15, 23, 0.78);
+  background: rgba(15, 13, 10, 0.78);
 }
 
 .section.section-contact {
-  background-color: rgba(8, 11, 18, 0.96);
+  background-color: rgba(16, 14, 10, 0.94);
   background-image: radial-gradient(
       980px 520px at 18% 10%,
-      rgba(124, 92, 255, 0.12),
+      rgba(201, 151, 58, 0.12),
       transparent 62%
     ),
-    radial-gradient(900px 520px at 78% 30%, rgba(45, 226, 230, 0.08), transparent 65%);
+    radial-gradient(900px 520px at 78% 30%, rgba(120, 140, 70, 0.08), transparent 65%);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -267,61 +297,62 @@ h3 {
 }
 
 .section[data-gallery-cat="leucht"] {
-  --section-color: rgba(7, 24, 27, 0.92);
+  --section-color: rgba(12, 18, 18, 0.9);
   --section-image: radial-gradient(
       1100px 520px at 18% 0%,
-      rgba(45, 226, 230, 0.12),
+      rgba(61, 154, 163, 0.12),
       transparent 60%
     ),
-    radial-gradient(900px 520px at 80% 35%, rgba(124, 92, 255, 0.14), transparent 62%);
+    radial-gradient(900px 520px at 80% 35%, rgba(201, 151, 58, 0.1), transparent 62%);
 }
 
 .section[data-gallery-cat="objekt"] {
-  --section-color: rgba(22, 12, 23, 0.92);
+  --section-color: rgba(18, 12, 16, 0.9);
   --section-image: radial-gradient(
       980px 520px at 18% 10%,
-      rgba(255, 78, 205, 0.12),
+      rgba(177, 90, 127, 0.12),
       transparent 60%
     ),
-    radial-gradient(900px 520px at 78% 30%, rgba(124, 92, 255, 0.12), transparent 62%);
+    radial-gradient(900px 520px at 78% 30%, rgba(61, 154, 163, 0.08), transparent 62%);
 }
 
 .section[data-gallery-cat="wohnen"] {
-  --section-color: rgba(10, 20, 14, 0.92);
+  --section-color: rgba(16, 14, 10, 0.9);
   --section-image: radial-gradient(
       980px 520px at 18% 10%,
-      rgba(70, 255, 170, 0.09),
+      rgba(201, 151, 58, 0.1),
       transparent 62%
     ),
-    radial-gradient(900px 520px at 78% 30%, rgba(45, 226, 230, 0.1), transparent 65%);
+    radial-gradient(900px 520px at 78% 30%, rgba(61, 154, 163, 0.07), transparent 65%);
 }
 
 .section[data-gallery-cat="kueche"] {
-  --section-color: rgba(24, 18, 8, 0.92);
+  --section-color: rgba(18, 14, 10, 0.9);
   --section-image: radial-gradient(
       980px 520px at 18% 10%,
-      rgba(255, 190, 60, 0.11),
+      rgba(201, 151, 58, 0.12),
       transparent 62%
     ),
-    radial-gradient(900px 520px at 78% 30%, rgba(255, 78, 205, 0.08), transparent 65%);
+    radial-gradient(900px 520px at 78% 30%, rgba(177, 90, 127, 0.06), transparent 65%);
 }
 
 .section[data-gallery-cat="sonstiges"] {
-  --section-color: rgba(14, 16, 22, 0.92);
+  --section-color: rgba(14, 12, 10, 0.9);
   --section-image: radial-gradient(
       980px 520px at 18% 10%,
-      rgba(255, 255, 255, 0.06),
+      rgba(255, 246, 220, 0.05),
       transparent 62%
     ),
-    radial-gradient(900px 520px at 78% 30%, rgba(124, 92, 255, 0.08), transparent 65%);
+    radial-gradient(900px 520px at 78% 30%, rgba(177, 90, 127, 0.06), transparent 65%);
 }
 
 .page-head {
   height: clamp(92px, 12vh, 120px);
   padding: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(11, 15, 23, 0.65);
-  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 246, 220, 0.04), transparent 40%),
+    var(--chrome);
   display: flex;
   align-items: center;
 }
@@ -423,7 +454,7 @@ h3 {
 .card {
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--panel);
   padding: 18px;
 }
 
@@ -471,9 +502,9 @@ h3 {
 .gallery-view {
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--panel);
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-rows: auto auto;
 }
@@ -663,6 +694,13 @@ body.is-modal-open {
   min-height: calc(2 * 1.35em);
 }
 
+.lightbox-name {
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .toast {
   position: fixed;
   inset: auto 18px 18px 18px;
@@ -724,23 +762,25 @@ textarea {
   padding: 10px 12px;
   border-radius: 12px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.22);
   color: var(--text);
   outline: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 input:focus,
 textarea:focus {
-  border-color: rgba(45, 226, 230, 0.55);
-  box-shadow: 0 0 0 4px rgba(45, 226, 230, 0.12);
+  border-color: rgba(201, 151, 58, 0.55);
+  box-shadow: 0 0 0 4px rgba(201, 151, 58, 0.14);
 }
 
 .site-footer {
   border-top: 1px solid var(--line);
   margin-top: 0;
   padding: 18px 0;
-  background: rgba(11, 15, 23, 0.65);
-  backdrop-filter: blur(10px);
+  background:
+    linear-gradient(180deg, rgba(255, 246, 220, 0.04), transparent 40%),
+    var(--chrome);
 }
 
 .footer-inner {

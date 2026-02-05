@@ -6,5 +6,10 @@
     "assets/gallery/2026_01_28/original/sonstiges/spieluhren/schenke_musik/IMG_4596.JPG",
     "assets/gallery/2026_01_28/original/sonstiges/spieluhren/schenke_musik/IMG_5078.JPG"
   ],
-  "base": "assets/gallery/2026_01_28/processed/sonstiges/spieluhren/set-01"
+  "base": "assets/gallery/2026_01_28/processed/sonstiges/spieluhren/set-01",
+  "titles": [
+    "schenke_musik_002",
+    "schenke_musik_001",
+    "schenke_musik_003"
+  ]
 }

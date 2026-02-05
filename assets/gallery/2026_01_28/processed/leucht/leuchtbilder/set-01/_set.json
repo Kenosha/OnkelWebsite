@@ -9,5 +9,13 @@
     "assets/gallery/2026_01_28/original/leucht/leuchtbilder/auf_anfrage_das_perfekte_persoenliche_geschenk/IMG_7911.HEIC",
     "assets/gallery/2026_01_28/original/leucht/leuchtbilder/auf_anfrage_das_perfekte_persoenliche_geschenk/IMG_7859.heic"
   ],
-  "base": "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-01"
+  "base": "assets/gallery/2026_01_28/processed/leucht/leuchtbilder/set-01",
+  "titles": [
+    "auf_anfrage_das_perfekte_persoenliche_geschenk_006",
+    "auf_anfrage_das_perfekte_persoenliche_geschenk_001",
+    "auf_anfrage_das_perfekte_persoenliche_geschenk_005",
+    "auf_anfrage_das_perfekte_persoenliche_geschenk_004",
+    "auf_anfrage_das_perfekte_persoenliche_geschenk_003",
+    "auf_anfrage_das_perfekte_persoenliche_geschenk_002"
+  ]
 }

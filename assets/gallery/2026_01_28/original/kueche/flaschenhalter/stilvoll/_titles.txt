@@ -1,0 +1,8 @@
+# Format: <Dateiname> | <Bildname>
+# Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
+IMG_3514.JPG | stilvoll_001
+IMG_7612.HEIC | stilvoll_002
+IMG_7617.HEIC | stilvoll_003
+IMG_7923.HEIC | stilvoll_004
+rebe_dunkel.JPG | stilvoll_005
+rebe_tisch.jpg | stilvoll_006

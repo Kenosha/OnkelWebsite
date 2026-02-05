@@ -6,5 +6,10 @@
     "assets/gallery/2026_01_28/original/kueche/flaschenhalter/personalisierbar/IMG_9671.HEIC",
     "assets/gallery/2026_01_28/original/kueche/flaschenhalter/personalisierbar/IMG_9746.HEIC"
   ],
-  "base": "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-01"
+  "base": "assets/gallery/2026_01_28/processed/kueche/flaschenhalter/set-01",
+  "titles": [
+    "personalisierbar_003",
+    "personalisierbar_001",
+    "personalisierbar_002"
+  ]
 }

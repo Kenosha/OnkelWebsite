@@ -1,0 +1,6 @@
+# Format: <Dateiname> | <Bildname>
+# Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
+IMG_3940.JPG | einzigartig_001
+IMG_4143.JPG | einzigartig_002
+IMG_4146.JPG | einzigartig_003
+IMG_4247.HEIC | einzigartig_004

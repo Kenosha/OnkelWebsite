@@ -1,0 +1,4 @@
+# Format: <Dateiname> | <Bildname>
+# Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
+IMG_0951.HEIC | wenn_blumen_nicht_reichen_001
+IMG_6068.HEIC | wenn_blumen_nicht_reichen_002

@@ -9,5 +9,13 @@
     "assets/gallery/2026_01_28/original/objekt/unmoegliche_objekte/stilvoll/IMG_2807.HEIC",
     "assets/gallery/2026_01_28/original/objekt/unmoegliche_objekte/stilvoll/IMG_4276.HEIC"
   ],
-  "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-02"
+  "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-02",
+  "titles": [
+    "stilvoll_006",
+    "stilvoll_001",
+    "stilvoll_003",
+    "stilvoll_004",
+    "stilvoll_002",
+    "stilvoll_005"
+  ]
 }

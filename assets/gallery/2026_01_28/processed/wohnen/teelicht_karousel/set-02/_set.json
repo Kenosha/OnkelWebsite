@@ -8,5 +8,12 @@
     "assets/gallery/2026_01_28/original/wohnen/teelicht_karousel/personalisierbar/IMG_1639.HEIC",
     "assets/gallery/2026_01_28/original/wohnen/teelicht_karousel/personalisierbar/IMG_1624.HEIC"
   ],
-  "base": "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-02"
+  "base": "assets/gallery/2026_01_28/processed/wohnen/teelicht_karousel/set-02",
+  "titles": [
+    "personalisierbar_001",
+    "personalisierbar_002",
+    "personalisierbar_005",
+    "personalisierbar_004",
+    "personalisierbar_003"
+  ]
 }

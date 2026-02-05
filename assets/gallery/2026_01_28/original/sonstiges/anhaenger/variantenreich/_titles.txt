@@ -1,0 +1,5 @@
+# Format: <Dateiname> | <Bildname>
+# Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
+anhaenger_korrigiert.png | variantenreich_001
+elfi.JPG | variantenreich_002
+elfi_leuchtet.JPG | variantenreich_003

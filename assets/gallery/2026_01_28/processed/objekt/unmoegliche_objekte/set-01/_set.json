@@ -6,5 +6,10 @@
     "assets/gallery/2026_01_28/original/objekt/unmoegliche_objekte/personalisierbar/f1180213-0519-4d75-96b9-98b19b693f0b.JPG",
     "assets/gallery/2026_01_28/original/objekt/unmoegliche_objekte/personalisierbar/181815eb-aa27-4648-a57f-75f565b31739.JPG"
   ],
-  "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-01"
+  "base": "assets/gallery/2026_01_28/processed/objekt/unmoegliche_objekte/set-01",
+  "titles": [
+    "personalisierbar_002",
+    "personalisierbar_003",
+    "personalisierbar_001"
+  ]
 }

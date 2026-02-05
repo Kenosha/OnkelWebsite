@@ -10,5 +10,14 @@
     "assets/gallery/2026_01_28/original/leucht/leuchtuhren/geschenk_oder_visitenkarte/IMG_3255.HEIC",
     "assets/gallery/2026_01_28/original/leucht/leuchtuhren/geschenk_oder_visitenkarte/IMG_9238.HEIC"
   ],
-  "base": "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02"
+  "base": "assets/gallery/2026_01_28/processed/leucht/leuchtuhren/set-02",
+  "titles": [
+    "geschenk_oder_visitenkarte_004",
+    "geschenk_oder_visitenkarte_002",
+    "geschenk_oder_visitenkarte_005",
+    "geschenk_oder_visitenkarte_003",
+    "geschenk_oder_visitenkarte_006",
+    "geschenk_oder_visitenkarte_001",
+    "geschenk_oder_visitenkarte_007"
+  ]
 }

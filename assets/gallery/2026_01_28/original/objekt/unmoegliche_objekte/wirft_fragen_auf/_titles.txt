@@ -1,0 +1,10 @@
+# Format: <Dateiname> | <Bildname>
+# Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
+040ab3b1-bf7f-4472-b161-6f230ce17ed8.JPG | wirft_fragen_auf_001
+7d70e64e-27ac-41b3-83c9-d278d9726393.JPG | wirft_fragen_auf_002
+8622f28c-7ddb-428e-b09f-1d2fa507a904.JPG | wirft_fragen_auf_003
+IMG_2800.HEIC | wirft_fragen_auf_004
+IMG_4280.HEIC | wirft_fragen_auf_005
+IMG_4294.HEIC | wirft_fragen_auf_006
+IMG_6400.HEIC | wirft_fragen_auf_007
+IMG_6442.heic | wirft_fragen_auf_008

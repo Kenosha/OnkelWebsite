@@ -1,0 +1,7 @@
+# Format: <Dateiname> | <Bildname>
+# Den Bildnamen kannst du frei ändern. Den Dateinamen bitte unverändert lassen.
+IMG_0427.HEIC | vielseitig_einsetzbar_001
+IMG_3018.HEIC | vielseitig_einsetzbar_002
+IMG_3022.HEIC | vielseitig_einsetzbar_003
+IMG_4138.HEIC | vielseitig_einsetzbar_004
+IMG_6466.HEIC | vielseitig_einsetzbar_005

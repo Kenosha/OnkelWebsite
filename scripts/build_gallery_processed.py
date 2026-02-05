@@ -379,6 +379,33 @@ def parse_order_file(group_dir: Path, image_files: list[Path]) -> list[Path]:
     return ordered + rest
 
 
+def parse_titles_file(group_dir: Path) -> dict[str, str]:
+    titles_path = group_dir / "_titles.txt"
+    if not titles_path.is_file():
+        return {}
+
+    mapping: dict[str, str] = {}
+    for raw in read_text_safe(titles_path).splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+
+        left = ""
+        right = ""
+        if "|" in line:
+            a, b = line.split("|", 1)
+            left, right = a.strip(), b.strip()
+        elif "\t" in line:
+            a, b = line.split("\t", 1)
+            left, right = a.strip(), b.strip()
+
+        if not left or not right:
+            continue
+        mapping[left] = right
+
+    return mapping
+
+
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
@@ -573,11 +600,19 @@ def main(argv: list[str]) -> int:
 
                 jpg_urls: list[str] = []
                 sources: list[str] = [str(p.as_posix()) for p in images]
+                title_map = parse_titles_file(group_dir)
+                titles: list[str] = []
                 for idx_img, src in enumerate(images, start=1):
                     out_name = f"{idx_img:03d}.jpg"
                     out_path = set_out_dir / out_name
                     url = f"{base_url}/{out_name}"
                     jpg_urls.append(url)
+                    title = (
+                        title_map.get(src.name)
+                        or title_map.get(out_name)
+                        or f"{group_dir.name}_{idx_img:03d}"
+                    )
+                    titles.append(str(title))
 
                     if converter:
                         try:
@@ -604,6 +639,7 @@ def main(argv: list[str]) -> int:
                         "hold": hold,
                         "base": base_url,
                         "images": jpg_urls,
+                        "titles": titles,
                     }
                 )
 
@@ -614,6 +650,7 @@ def main(argv: list[str]) -> int:
                         "hold": hold,
                         "sources": sources,
                         "base": base_url,
+                        "titles": titles,
                     },
                 )
 
