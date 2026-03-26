@@ -9,7 +9,7 @@
     />
     <title>Onkel's Kunsthandwerk – Galerie</title>
     <link rel="stylesheet" href="assets/css/styles.css?v=2026_03_26_7" />
-    <script defer src="assets/js/main.js?v=2026_01_28_4"></script>
+    <script defer src="assets/js/main.js?v=2026_03_26_1"></script>
     <script defer src="assets/js/gallerie.js?v=2026_02_05_3"></script>
   </head>
   <body>
@@ -19,7 +19,19 @@
           <span class="brand-mark" aria-hidden="true"></span>
           <span class="brand-text">Onkel's Kunsthandwerk</span>
         </a>
-        <nav class="nav" aria-label="Hauptnavigation">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Navigation öffnen"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          data-nav-toggle
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="site-nav" aria-label="Hauptnavigation" data-nav>
           <a class="nav-link" href="index.html">Start</a>
           <a class="nav-link" href="gallerie.html">Galerie</a>
           <a class="nav-link" href="kontakt.html">Kontakt</a>
